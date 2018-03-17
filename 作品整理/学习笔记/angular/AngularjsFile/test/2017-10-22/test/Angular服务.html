@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myapp">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script type="text/javascript" src="../js/angular.min.js"></script>
+<body>
+<div ng-controller="Ctr1 as ctr1">
+    <h2>控制器ctr1</h2>
+    <input type="text" ng-model="ctr1.a">
+   <input type="button" ng-click="ctr1.setA()" value="设置a的值">
+</div>
+
+
+<div ng-controller="Ctr2 as ctr2">
+    <h2>控制器ctr2</h2>
+    <p>{{ctr2.getA()}}</p>
+
+</div>
+<script>
+    angular.module('myapp',[])
+        .service('myservice',[function(service){
+
+          this.a=0
+        }])
+
+        .controller('Ctr1',['myservice',function(service){
+            var self=this;
+            this.setA=function (){
+                service.a=self.a
+            }
+        }])
+
+        .controller('Ctr2',['myservice',function(service){
+        this.getA=function () {
+            return service.a
+        }
+        }])
+
+</script>
+</body>
+</html>

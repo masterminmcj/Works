@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+<script type="application/javascript" src="JSfile/angular.min.js">
+
+</script>
+</head>
+<style type="text/css">
+.div1 input{width: 300px;
+    height: 35px;
+    border-radius: 5px;
+    margin: 3px;
+    border: 1px solid
+}
+ .lab1>input,.lab2>input{width: 300px;height: 35px;
+     line-height: 35px;font-size: 16px;margin: 5px;
+ }
+    .result{width: 200px;height: 40px;line-height: 40px;margin: 3px 75px;background-color: #eee;
+    color: red;font-size: 16px;}
+</style>
+<body>
+<!--定义controller可以从后台读取页面返回到页面
+<div ng-app="myapp" ng-controller="mycontroller" class="div1">
+First-name:<input type="text" ng-model="first_name"><br>
+    Last-name:<input type="text" ng-model="last_name">
+    <p>欢迎你:{{first_name+" "+last_name}}</p>
+
+
+</div>
+<!--初始化一些信息(可以是数字对象字符串数组)并运用于后面页面
+<div ng-app="" ng-init="count=5;price=10" >
+    <span>总金额为:{{count*price}}}</span>
+</div>
+
+
+<div ng-app="" ng-init="fruit=['apple','balana','pills']">
+    <p>初始化数组进行遍历(可以为数组或字符串)</p>
+<ul>
+<li ng-repeat="x in fruit">
+    {{x}}
+</li>
+
+</ul>
+</div>
+-->
+
+
+
+<div ng-app="">
+    <h2>简易加法器</h2>
+    <label class="lab1">
+    操作数1：<input type="text" maxlength="15" ng-model="op1">
+    </label>
+    <div></div>
+    <label class="lab2">
+     操作数2：<input type="text" maxlength="15" ng-model="op2">
+    </label>
+    <div></div>
+    输出结果:<div class="result">{{op2*1+op1*1}}</div><!--把输入框中字符串转数字-->
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<script type="application/javascript">
+    var app=angular.module("myapp",[]);
+app.controller("mycontroller",function($scope){
+    $scope.first_name="Durant";//设置初始值
+    $scope.last_name="Curry";
+})
+
+</script>
+</body>
+</html>

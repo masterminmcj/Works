@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link href="/public/css/admin_nav.css" rel="stylesheet">
+    {% block cssLink %}{% endblock %}
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+<nav class="nav">
+    <div class="item1">后台管理</div>
+    <div class="item2"><a href="/admin/userManage">用户管理</a></div>
+    <div class="dropdown item2"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+      分类管理
+        <b class="caret"></b>
+    </a>
+        <ul class="dropdown-menu">
+            <li><a href="/admin/category_index">分类首页</a></li>
+            <li><a href="/admin/category_add">分类添加</a></li>
+
+        </ul></div>
+
+    <div class="dropdown item2"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+        博文管理
+        <b class="caret"></b>
+    </a>
+        <ul class="dropdown-menu">
+            <li><a href="/admin/blogContent_index">博文首页</a></li>
+            <li><a href="/admin/blogContent_add">新增博客</a></li>
+
+        </ul></div>
+
+    <div class="dropdown item3 pull-right">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+          {% block admin %}{% endblock %}
+            <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu">
+            <li><a href="/" >退出</a></li>
+
+        </ul>
+    </div>
+</nav>
+
+{% block content%}
+
+{% endblock %}
+</body>
+</html>

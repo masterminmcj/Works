@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery部分(2)</title>
+    <script src="https://code.jquery.com/jquery-2.2.4.js"></script>
+</head>
+<style>
+    .test_hover,.test_toggle{
+        width: 100px;
+        height: 100px;
+        line-height: 100px;
+        text-align: center;
+        font-size: 20px;
+    margin: 5px;
+        border:1px solid;
+    }
+.active{
+    background-color:green;
+}
+
+</style>
+<body>
+
+
+<h2>测试hover()和toggle()方法</h2>
+
+<div class="test_hover">hover</div>
+<div class="test_toggle">toggle</div>
+
+
+<button class="E_toggle">toggle()</button>
+
+
+<h2>bind()的使用</h2>
+
+<div class="bind_test">测试bind</div>
+<button class="trigger_bind1">测试一</button>
+<button class="trigger_bind2">测试二</button>
+<button class="trigger_bind3">测试三</button>
+
+
+<h2>jquery的AJAX</h2>
+
+<div class="test_load1">未调用load()方法</div>
+
+<div class="test_get">未调用get()方法</div>
+<div class="test_ajax">未调用get()方法</div>
+
+<button class="test_load2">load()</button>
+<button class="test_load3">get()</button>
+<button class="test_load4">ajax()</button>
+<button class="test_load5">ajax()的后续版本调用</button>
+
+<script>
+    //事件处理
+    //选两个强大而不常用的方法 hover() toggle()
+    //hover()可以传递两个参数 一个参数时会在鼠标移入移除是触发事件两个参数时会分别鼠标移入移出触发事件
+    //toggle()方法可接收多个参数,鼠标依次点击触发并且循环(1.9版本被删除)
+    //用法变成了显示或影藏元素参数也变了
+$('.test_hover').hover(function () {
+    $(this).addClass('active')
+},function () {
+    $(this).removeClass('active')
+});
+//由于用法被移出故不演示了
+//$(function () {
+//    $('.E_toggle').toggle(function () {
+//        $('.test_toggle').css({'background-color':'red'})
+//    },function () {
+//        $('.test_toggle').css({'background-color':'green'})
+//
+//    },function () {
+//        $('.test_toggle').css({'background-color':'blue'})
+//
+//    })
+//});
+
+//---------------------------------------------------
+   //bind() one()
+   //bind()的用法很广泛
+    //1:最简单的用法接收两参数 事件类型(可以传多个以空格隔开,将会分别注册所传事件类型) 事件处理程序
+    $('.trigger_bind1').bind('click',function () {
+        $('.bind_test').css({'background-color':'red'})
+    });
+
+    //2:接收三个参数 第二个参数作为event对象的data属性
+
+    $('.trigger_bind2').bind('click',[1,2],function (e) {
+        console.log(e.data)
+    });
+    //接收一个对象 对象形式--->事件类型:处理程序
+
+$('.bind_test').bind({mouseover:function () {
+    console.log('over')
+},mouseout:function () {
+    console.log('out')
+}});
+
+ //高级用法 可以注册命名空间,便于模块化维护
+
+//作为click处理程序在myclk命名空间为所有的元素绑定处理函数
+    $('.trigger_bind3').bind('click.myclk',function () {
+        console.log('clicking')
+    });
+
+
+
+//---------------------------------------------------------
+    //jquery的ajax
+    //1:load()方法,根据传参内容不同功能也不同
+    //参数是字符串,将会异步加载url并替换选择器之前的内容
+
+    $('.test_load2').click(function () {
+        $('.test_load1').load('./test.txt')
+    });
+//参数是函数,类似于onload()事件,加载完成后触发事件
+
+
+//get() post()以get或post方式发送ajax,注意这是jquery的函数而不是方法
+  //  参数意义分别是:必须的url 可选的参数(作为查询字符串加在URL后面) 请求成功后的回调函数(有三个参数第一个参数是返回的数据)
+   //get()的第四个参数可以指定返回的数据类型 'html','text','json' 'jsonp'等等
+    $('.test_load3').click(function () {
+$.get('./test.json','name=mastermin',function(chunk,su){
+    console.log(chunk)
+})
+    });
+
+
+   //ajax()函数 以上方法的综合体,接受的是一个对象,对象的属性指定相应的操作方法,下列只列出常用的几个属性
+
+    $('.test_load4').click(function () {
+$.ajax({
+    method:'get',
+    url:'./test.json',
+//    data:---;针对post请求
+    success:function (data) {
+        var html='';
+        for(var k in data){
+     html+=('<p style="color: green">'+k+':'+data[k]+'</p>')
+
+        }
+
+$('.test_ajax')[0].innerHTML=html
+
+    },
+    dataType:'json'//指定返回类型,影响到返回数据的格式
+
+})
+    });
+
+    //jquery后续版本修改了这一方法,写成promise对象形式
+    $('.test_load5').click(function () {
+        $.ajax({
+            method:'get',
+            url:'./test.json',
+            dataType:'json'
+
+        })
+            .success(function (data) {
+                var html='';
+                for(var k in data){
+                    html+=('<p style="color: green">'+k+':'+data[k]+'</p>')
+
+                }
+                $('.test_ajax')[0].innerHTML=html
+            })
+
+    });
+//可以看出调用效果是一样的不过更加符合最新的标准
+
+
+
+
+
+
+</script>
+
+</body>
+</html>

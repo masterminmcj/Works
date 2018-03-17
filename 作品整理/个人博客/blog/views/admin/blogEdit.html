@@ -1,0 +1,47 @@
+{% extends './nav-public.html'%}
+
+{% block title %}用户管理{% endblock %}
+
+{% block admin %}
+{{userInfo.username}}
+{% endblock %}
+{% block cssLink %}
+<link href="/public/css/categoryAdd.css" rel="stylesheet">
+<link href="/public/css/pagegation.css" rel="stylesheet">\
+<link href="/public/css/blogContent_index.css" rel="stylesheet">
+
+
+{% endblock %}
+
+{% block content%}
+<div class="nowposition">
+    <ol class="breadcrumb">
+        当前位置：
+        <li><a href="/admin/category_index">首页</a></li>
+        <li class="active">　博客的修改</li>
+    </ol>
+</div>
+
+<!--显示用户列表-->
+
+<form action="/admin/Content/edit" method="post" name="ContentAdd">
+    {% if CurrentContent %}
+    <label class="blogTitle">
+        请输入博客标题:<input type="text" name="blogTitle" value="{{CurrentContent.title}}">
+                <input type="hidden" name="CurrentTitle" value="{{CurrentContent.title}}">
+    </label>
+
+    <label class="blogContent">
+        请输入博客内容：
+        <textarea rows="5" cols="50" name="mainContent" >{{CurrentContent.mainContent}}</textarea>
+    </label>
+
+    <label class="author">
+        请输入博客作者的名称：
+        <input type="text" name="author" value="{{CurrentContent.author}}">
+    </label>
+    <input type="submit" value="发布博客">
+    {% endif %}
+</form>
+
+{% endblock %}

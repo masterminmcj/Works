@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myapp">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+<script src="../js/angular.min.js"></script>
+</head>
+<style>
+    {
+        color: #333;
+        font-size: 18px;
+    }
+
+    form[name='form1']>p>input{
+        width: 300px;
+        height: 35px;
+        border-radius: 5px;
+        outline:none;
+        border: 1px solid #999999;
+    }
+    .blank{
+        display:inline-block;
+        width:13px
+    }
+</style>
+<body>
+<div class="formCheck"  ng-controller="Ctr as ctr1">
+    <!--
+    说明:
+    $dirty只有控件修改过触发
+    $error 不满足require为true
+    $invalid 该控件没有通过时为true
+
+    -->
+
+<form name="form1">
+    <p>{{ctr1.formobj}}</p>
+    <p>
+        用户名:<input type="text" name="username" required ng-pattern="/\w{6,12}/" ng-model="ctr1.formobj.username">
+    <span ng-show="form1.username.$error.required&&form1.username.$dirty&&ctr1.formobj.username!=''" ng-style="{'color':'red'}">用户名不能为空!</span>
+    <span ng-show="!form1.username.$error.required&&form1.username.$error.pattern&&form1.username.$dirty" ng-style="{'color':'red'}">用户名不合法!</span>
+    </p>
+<p>
+    密<span class="blank"></span>码:<input type="password" name="psd" required ng-model="ctr1.formobj.passowrd" ng-minlength="6">
+    <span ng-show="form1.psd.$error.required&&form1.psd.$dirty&&ctr1.formobj.password!='' " ng-style="{'color':'red'}">密码不能为空!</span>
+    <span ng-show="form1.psd.$error.minlength" ng-style="{'color':'red'}">密码最短为6位</span>
+</p>
+
+</form>
+
+
+</div>
+
+<script>
+//要使用Angular表单验证有两个必要条件：
+// 1 验证的控件必须要有ng-modle进行双向数据绑定
+// form元素必须要有name属性
+    angular.module('myapp',[])
+        .controller('Ctr',[function(){
+
+
+
+        }])
+
+
+
+</script>
+</body>
+</html>

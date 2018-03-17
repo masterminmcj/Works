@@ -1,0 +1,39 @@
+.handleMess{
+    width: 100%;
+font-size: 20px;
+    border: 2px solid #ff7714;
+}
+.handleTitle{
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    border-bottom: 1px solid white;
+padding-left: 20px;
+}
+.handleContent{
+    width: 100%;
+    height: 100px;
+    padding: 10px 0;
+    color: white;
+    background-color: #999;
+    line-height: 80px;
+    padding-left: 20px;
+
+}
+.handleResult{
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    background-color: #eee;
+    padding-left: 20px;
+
+}
+.warning{
+background-color: #ff5366;
+    color:white;
+}
+.success{
+    background-color: #6bff5e;
+    color:white;
+}
+

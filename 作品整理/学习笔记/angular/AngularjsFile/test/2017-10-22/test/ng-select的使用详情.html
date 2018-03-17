@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myapp">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="../js/angular.min.js"></script>
+</head>
+<body >
+
+
+
+
+
+
+
+<div class="section1" ng-controller="Ctr as ctr1">
+    <!--part1-->
+    <select ng-options="x for x in ctr1.data1" ng-model="userDate1"></select>
+    <!--part2注意 for前面的值为显示在页面中的值即，lable中的值，as前面的值为提交的值，即value中的值,所绑定的对象为提交的值-->
+
+    <select ng-options="x.sid as x.name for x in ctr1.data2" ng-model="ctr1.userData2"></select>
+    <!--part3-->
+    <select ng-options="k as v for (k,v) in ctr1.data3" ng-model="ctr1.userData3"></select>
+
+
+</div>
+
+
+
+
+
+<script>
+    angular.module('myapp',[])
+        .controller('Ctr',[function(){
+            this.userData='';
+            //1 data为纯数组
+            this.data1=['张三','李四','王二','狗蛋']
+
+            //2 data数组里面嵌套对象
+            this.data2=[
+                {name:'张三',sex:'男',sid:100},
+                {name:'李四',sex:'女',sid:101},
+                {name:'王二',sex:'男',sid:102},
+                {name:'狗蛋',sex:'女',sid:103}
+            ];
+
+            //3 纯对象
+           this.data3={
+                '100':'张三',
+               '102':'李四',
+               '103':'王二',
+               '104':'狗蛋'
+           }
+
+
+        }])
+
+
+
+</script>
+</body>
+</html>

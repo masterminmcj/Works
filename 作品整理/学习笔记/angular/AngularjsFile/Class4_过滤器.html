@@ -1,0 +1,58 @@
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="application/javascript" src="JSfile/angular.min.js"></script>
+</head>
+<style type="text/css">
+.div1 input{width: 200px;height: 30px;font-size: 16px;margin-right: 40px}
+.div2{width: 400px;height: 40px;line-height: 40px;
+    background-color: #eee;margin:20px 0;color: red}
+.result{width: 600px;background-color: #eee;margin:20px 0;color: red;}
+.S_name{width:200px;margin-left: 10px}
+    .job{margin-left: 20px}
+</style>
+<body>
+<h2>简易的价格计算</h2>
+<div ng-app="myapp" ng-controller="mycontroller" class="div1">
+数量:<input type="number" ng-model="numbers" min="0">
+单价:<input type="number" ng-model="prices" min="0">
+
+    <!--这里用到了过滤器currency把数据转化为货币-->
+<div class="div2">{{sum+((numbers*prices)|currency:"￥")}}</div>
+
+
+
+
+<h2>公司员工检索</h2>
+请输入员工姓名:<input type="text" ng-model="clerk_name">
+<div class="result" ng-repeat="x in clerk_list|filter:clerk_name">
+    <span class="name">{{"姓名："}}</span>
+    <span class="S_name">{{x.name|uppercase}}</span>
+    <span class="job">{{"职位:"}}</span>
+    <span class="S_job">{{x.job}}</span>
+</div>
+</div>
+    <script>
+    (function() {
+        var app = angular.module("myapp",[]);
+        app.controller("mycontroller", function ($scope) {
+             $scope.numbers = 1;
+             $scope.prices = 1;
+            $scope.sum = "所得金额为:";
+$scope.clerk_list=[{name:"Dany",job:"经理"},
+    {name:"Sumdy",job:"程序员"},
+    {name:"Linda",job:"软件测试员"},
+    {name:"Curry",job:"架构师"},
+    {name:"Smith",job:"推广员"}]
+        })
+
+    })();
+
+    /**
+     *angular的过滤器有两种一种是内置的过滤器如uppercase,date,currency
+     * json，fliter(查找)等另一种是自定义的过滤器
+     */
+</script>
+</body>
+</html>

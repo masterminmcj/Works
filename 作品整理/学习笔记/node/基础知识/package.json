@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "express": "^4.16.2",
+    "jade": "^1.11.0",
+    "mongoskin": "^2.1.0",
+    "mysql": "^2.15.0"
+  }
+}

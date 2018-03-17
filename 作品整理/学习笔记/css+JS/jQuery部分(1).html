@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery实现</title>
+
+    <script src="https://code.jquery.com/jquery-2.2.4.js"></script>
+</head>
+<style>
+    .div2{
+        width: 100px;
+        height: 100px;
+        border: 10px solid green;
+        outline: 10px solid blue;
+        background-color: red;
+        font-size: 20px;
+margin: 10px;
+    }
+    .div3_1,.div3_2{
+        font-size: 18px;
+
+    }
+    .div3_1{
+        background-color: red;
+    }
+    .div3_2{
+        background-color: green;
+    }
+    .yellow{
+        color: yellow;
+    }
+
+
+
+    .wrap_content{
+        width: 100px;
+        height: 100px;
+        background-color: red;
+        margin: 5px;
+    }
+    .wrap_wrapper{
+        background-color: green;
+        padding: 10px;
+        margin: 5px;
+    }
+    .wrap_Inner{
+        background-color: blue;
+        padding: 5px;
+    }
+
+</style>
+<body>
+
+<div class="div1">111</div>
+
+
+<h2>测试$.fn</h2>
+
+<button class="btn1">测试fn</button>
+
+
+
+<h2>css()方法</h2>
+<div class="div2" style="width: 150px">222</div>
+
+
+<h2>jQuery实现元素的增删改查</h2>
+
+<div class="div3_1">我是第一行</div>
+<div class="div3_2">
+    我是最后一行
+<p>****</p>
+<p class="mychild">我是子节点</p>
+</div>
+
+<button class="add">增</button>
+<button class="delete">删</button>
+<button class="replace">改</button>
+<button class="query">查</button>
+<button class="clone">浅复制</button>
+<button class="deepclone">深复制</button>
+
+<hr>
+
+
+<h2>包裹元素</h2>
+<div class="wrap_content">我是第一个</div>
+<div class="wrap_content">我是第二个</div>
+
+<button class="wrapper">wrap()</button>
+<button class="wrapperInner">wrapInner()</button>
+<button class="wrapperAll">wrapAll()</button>
+
+<script>
+    $('.div1').css({
+        'width':'100px',
+        'height':'100px',
+        'background-color':'red',
+        'text-align':'center',
+        'line-height':'100px'
+    });
+
+var obj={
+    a:"aaaa",
+    b:'bbbb',
+    c:'cccc'
+};
+    //each遍历对象类似与foreach 和for in
+$.each(obj,function (k,v) {
+    console.log(k+':'+v)
+});
+//extend用于合并对象,实现对象的继承
+var obj1={};
+var testObj1={
+    name:'张三',
+    age:18,
+    job:'teacher',
+    skillA:function () {
+    console.log('我会授课')
+}
+};
+
+var testObj2={
+  name:'李四',
+    age:20,
+    job:'全栈工程师',
+    skillB:function () {
+        console.log('我会敲代码')
+    }
+};
+//为两个测试对象原型添加特有属性或者方法
+testObj1.__proto__.workroom="school";
+testObj2.__proto__.todo=function () {
+  console.log('搭建一个完整的系统')
+};
+
+//----------------------------------------------------------
+//$.extend()
+$.extend(obj1,testObj1,testObj2);
+console.log(obj1);
+//Object {name: "李四", age: 20, job: "全栈工程师", workroom: "school", skillA: function…}
+    /**
+     * 可以看出几点:
+     * 1:extend的作用是合并对象,把后面的几个对象的属性和方法合并到第一个对象中
+     * 2:同名的属性或方法将会被覆盖,后面的覆盖前面的
+     * 3:extend实际上是实现了原型链的继承
+     * 4:当extend()方法只有一个对象时,实际上是为$对象添加方法或者属性(这就为实现jQuery插件提供途径)
+     * 5:当我们想定义全局方法是可使用此方法添加方法到$对象中
+     */
+
+    //--------------------------------------------------------------
+    //$.fn
+    //$.fn为jQuery对象注册方法,然后在所有的jquery对象中都可使用此方法
+    //与extend方法区别的调用方法不同需要使用 $('selector')来构造jquery对象如何$('selecor').callback()
+    //一个为jquery函数一个为jquery方法
+function sayhello(){
+        alert('hello world!')
+    }
+
+$.fn.sayhello=sayhello;
+$(".btn1").on('click',function () {
+$('.btn1').sayhello()//hello wrold!
+});
+
+
+
+//css()方法获取的是元素的css属性而不是元素样式
+var div2=$('.div2').css('width');
+console.log(div2)   //150px   返回的是计算样式,即元素的实际尺寸
+
+
+    //data() 用于设置或获取一个与jquery对象相关联的数据
+//removeData()用于删除所设置的关联数据
+//类似于h5的sessionStorge()和localStorge()
+    $('.div2').data('a','AAA');
+
+console.log($('.div2').data('a'))//AAA
+
+
+    //----------------------------------------------------------------
+//jQuery实现增删改查复制
+
+
+    //增-->after(),before(),append(),prepend()
+    //after,before类似与insertBefore在元素前后添加指定的元素
+    //append,prepend()是在元素内添加节点,可接受一个可选参数作为参考位置
+    $('.add').click(function () {
+
+        $('.div3_1').append('<h2>我是通过append()新增的元素</h2>')
+    });
+
+
+    //删-->remove(),empty()
+
+    $('.delete').click(function () {
+       $('.div3_2').remove()
+    });
+
+//改 -->repalceWidth()
+$('.replace').click(function () {
+    $('.div3_1').replaceWith('<div class="div3_1">我是通过replaceWidth()实现替换的</div>')
+});
+
+
+//查 略
+
+//复制:(1)浅复制(默认,clone() 方法生成被选元素的副本，包含子节点、文本和属性,不复制事件处理程序)
+    // (2)深复制(复制事件)
+
+    $('.clone').click(function () {
+        //------------浅复制,可以看出事件处理程序没有被复制
+        var node=$('.div3_2').clone();
+    $('.div3_1').append(node)
+
+    });
+$('.mychild').mousemove(function () {
+$(this).toggleClass('yellow')
+
+    });
+
+    //---深复制
+    $('.deepclone').click(function () {
+        //------------深复制,可以看出事件处理程序被复制
+        var node=$('.div3_2').clone(true);
+        $('.div3_1').append(node)
+
+    });
+    $('.mychild').mousemove(function () {
+        $(this).toggleClass('yellow')
+
+    })
+
+
+//------------------------------------------------------
+//包装元素 wrap() wrapInner() wrapAll()
+//wrap()里面传入的参数是标签名或者是html字符串,效果是用此参数把对象包裹其中,只包裹第一个元素
+//wrapInner()与wrap()区别是把参数包裹到对象里面,只包裹第一个元素
+//wrapAll()与以上方法最大区别是包裹所有元素.
+
+$('.wrapper').click(function () {
+
+    //可以看出是为每一个class='wrapper_content'外部增加一个包裹层
+    $('.wrap_content').wrap('<div class="wrap_wrapper"></div>')
+
+});
+
+    //可以看出是为每一个class='wrapper_content'内部增加一个包裹层
+$('.wrapperInner').click(function () {
+   $('.wrap_content').wrapInner('<div class="wrap_Inner"></div>')
+});
+
+
+    //可以看出是为所有class='wrapper_content'的集合外部部增加一个包裹层
+    $('.wrapperAll').click(function () {
+
+        $('.wrap_content').wrapAll('<div class="wrap_wrapper"></div>')
+    });
+
+
+
+
+    //----------------------------------------------------
+    
+    //第一部分结束
+
+
+</script>
+</body>
+</html>

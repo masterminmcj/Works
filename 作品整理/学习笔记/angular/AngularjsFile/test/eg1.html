@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    table{
+        border-collapse: collapse;
+    }
+    table tr:nth-child(2n-1){
+        height: 45px;
+        background-color: #EEE;
+    }
+    table tr{
+        height: 45px;
+        background-color: #aaa;
+    }
+    table th{
+        background-color: #fff7d5;
+        border: 2px solid;
+    }
+    table tr td{
+        text-align: center;
+        width: 100px;
+        border: 1px solid;
+    }
+    table tr:hover{
+        background-color: #fff365;
+        font-size: 30px;
+    }
+
+</style>
+<body ng-app="myapp">
+
+<div ng-controller="ctr">
+
+    <table >
+        <tr>
+            <th>学号</th>
+            <th>编号</th>
+            <th>姓名</th>
+            <th>成绩</th>
+        </tr>
+        <tr ng-repeat="x in tb|orderBy:'score'">
+            <td>{{$index+1}}</td>
+            <td>{{x.num}}</td>
+            <td>{{x.name}}</td>
+            <td>{{x.score}}</td>
+
+        </tr>
+
+
+    </table>
+
+
+
+
+</div>
+
+
+
+
+<script type="application/javascript" src="../JSfile/angular.min.js"></script>
+
+<script type="application/javascript">
+angular.module('myapp',[])
+    .controller("ctr",function($scope) {
+
+$scope.tb=[
+    {num:101,name:"张三",score:90},
+    {num:102,name:"李四",score:88},
+    {num:103,name:"王二",score:65},
+    {num:104,name:"赵四",score:75},
+    {num:105,name:"钱五",score:92},
+    {num:106,name:"孙子",score:87},
+    {num:107,name:"周瑜",score:79},
+
+    ]
+    })
+</script>
+</body>
+</html>

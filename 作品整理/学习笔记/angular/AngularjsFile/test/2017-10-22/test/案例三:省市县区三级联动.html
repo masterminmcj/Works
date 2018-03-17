@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myapp">
+<head>
+    <meta charset="UTF-8">
+    <title>省市县区三级联动</title>
+    <script type="text/javascript" src="../js/angular.min.js"></script>
+</head>
+<style>
+    .areaSelect{
+        color: #333;
+        font-size: 18px;
+    }
+    .areaSelect>select{
+        width: 200px;
+        height: 35px;
+        outline: none;
+        background-color: #eee;
+        border: 2px outset #aaa ;
+         border-radius: 5px ;
+        box-shadow: 2px 2px 2px #666;
+        margin-left: 10px;
+        line-height: 35px;
+        font-size: 16px;
+    }
+</style>
+<body>
+
+
+<div ng-controller="Ctr as ctr1" class="areaSelect">
+<h2>请选择收货地址</h2>
+     <select ng-model="ctr1.province"  ng-options="x.name for x in ctr1.datas"></select>省
+   <select ng-model="ctr1.city"      ng-options=" x.name for x in ctr1.province.city"></select> 市
+<select ng-model="ctr1.contary"    ng-options="x for x in ctr1.city.area"></select>县/区
+    <p> 您的地址为:
+            <span>{{ctr1.province.name}}</span>
+            <span>{{ctr1.city.name}}</span>
+            <span>{{ctr1.contary}}</span>
+    </p>
+</div>
+<script>
+
+    angular.module('myapp',[])
+        .controller('Ctr',['$http',function($http){
+            //注入httpA模块，提供ajax
+            var self=this;
+$http.get('../doc/city').then(function(data){
+
+   self.datas=data.data;
+
+
+})
+
+        }])
+
+</script>
+</body>
+</html>

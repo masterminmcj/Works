@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="application/javascript" src="./JSfile/angular.min.js"></script>
+</head>
+<style type="text/css">
+    *:focus{outline:none}
+    .txt1{width: 200px;height: 40px;border-radius: 5px;
+        border: 2px solid #999;margin-left: 5px;
+    }
+    button{width: 60px;height: 40px;background-color: #0066ff;color: white}
+    .serch_result{width: 400px;height: 40px;
+        background-color: #EEE;margin: 5px;
+    line-height: 40px;text-align: center;
+    }
+</style>
+<body ng-app="myapp" ng-controller="mycontroller">
+请输入要检索的信息:<input type="text" class="txt1" ng-model="names" placeholder="请输入相关信息">
+<div class="sercher_display">
+    搜索结果为:
+    <p class="serch_result" ng-repeat="x in lists|filter:names|orderBy:'number'">
+        <span ng-model="num">{{"学号:"+x.number}}</span>
+        <span ng-model="nam">{{"姓名:"+x.name}}</span>
+        <span ng-model="sexs">{{"性别:"+x.sex}}</span>
+    </p>
+    <span>{{no_found}}</span>
+
+</div>
+
+
+
+
+
+
+<script type="application/javascript">
+    var serch_txt=document.getElementsByClassName("txt1");
+serch_txt[0].onfocus=function(){
+    serch_txt[0].style.borderColor="blue"
+};
+    serch_txt[0].onblur=function(){
+        serch_txt[0].style.borderColor="#EEE"
+
+    };
+
+
+
+
+
+var app=angular.module("myapp",[]);
+    app.controller("mycontroller",function($scope){
+        $scope.no_found="";
+        $scope.names="";
+
+        $scope.$watch("names",function() {
+            if ($scope.names != "") {
+                $scope.lists = [                      //创建信息列表
+                    {
+                        number: "3140203304",
+                        name: "张三",
+                        sex: "男"
+                    },
+                    {
+                        number: "3140203301",
+                        name: "小明",
+                        sex: "男"
+                    },
+                    {
+
+                        number: "3140203303",
+                        name: "小敏",
+                        sex: "女"
+                    },
+
+                    {
+                        number: "3140203302",
+                        name: "李四",
+                        sex: "男"
+
+                    },
+                    {
+                        number: "3140203306",
+                        name: "小丽",
+                        sex: "女"
+                    },
+                    {
+
+                        number: "3140203305",
+                        name: "娜娜",
+                        sex: "女"
+                    },
+                    {
+
+                        number: "3140203307",
+                        name: "王二",
+                        sex: "男"
+
+
+                    },
+
+                    {
+
+                        number: "3140203308",
+                        name: "李刚",
+                        sex: "男"
+                    }
+                ];
+                if ((!$scope.num)&&(!$scope.nam)&&(!$scope.sexs)) {
+                    $scope.no_found = "没有找到符合的人员!"
+                }
+            }
+
+        })
+    })
+
+
+
+</script>
+</body>
+</html>

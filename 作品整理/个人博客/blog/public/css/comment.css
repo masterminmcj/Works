@@ -1,0 +1,15 @@
+.comment_container{
+    width: 1280px;
+    height: 768px;
+}
+.now_positon{
+    width: 100%;
+    height: 50px;
+    background-color: #EEE;
+    border-bottom: 2px white;
+    line-height: 50px;
+}
+.now_positon span{
+    font-size: 20px;
+margin-left: 100px;
+}

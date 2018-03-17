@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>angular下ajax</title>
+</head>
+<script type="application/javascript" src="../../JSfile/angular.min.js"></script>
+<link href="../css/一种美观表格样式.css" rel="stylesheet">
+<body ng-app="myapp">
+<div ng-controller="ctr">
+    <h2>来自ajax的表格</h2>
+    <table class="tb">
+        <tr>
+            <th>编号</th>
+            <th>姓名</th>
+            <th>年龄</th>
+            <th>职业</th>
+            <th>薪水</th>
+        </tr>
+        <tr ng-repeat="x in data_list">
+            <td>{{$index}}</td>
+            <td>{{x.name}}</td>
+            <td>{{x.age}}</td>
+            <td>{{x.job}}</td>
+            <td>{{x.solary}}</td>
+        </tr>
+
+    </table>
+
+</div>
+
+<script type="application/javascript">
+    angular.module("myapp",[])
+        .controller("ctr",function($scope,$http) {
+            var jsourl='index.n';
+                $http({
+                    method:'GET',
+                    url:'index.json',
+                }).then(function successCallback (res){
+                    $scope.data_list = res.data;
+                });
+        })
+
+
+
+</script>
+</body>
+</html>

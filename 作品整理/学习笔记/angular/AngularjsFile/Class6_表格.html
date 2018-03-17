@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>完美生成表格</title>
+    <script type="application/javascript" src="JSfile/angular.min.js"></script>
+</head>
+<style type="text/css">
+    table{width: 300px;border: 1px solid}
+    table tr:nth-child(2n){background-color: #bbb;height: 45px;line-height: 45px;text-align: center}
+    table tr:nth-child(2n+1){background-color: #eee;height: 45px;line-height: 45px;text-align: center}
+
+</style>
+<body>
+<div ng-app="myapp" ng-controller="mycontroller">
+<table>
+  <tr>
+      <td>编号</td>
+      <td>学号</td>
+      <td>姓名</td>
+  </tr>
+
+    <tr ng-repeat="x in lists|orderBy:'scorecode'">
+        <td>{{$index+1}}</td><!--显示编号-->
+        <td>{{x.scorecode}}</td>
+        <td>{{x.name}}</td>
+    </tr>
+</table>
+
+
+
+
+
+
+</div>
+<script>
+    var app=angular.module("myapp",[]);
+    app.controller("mycontroller",function($scope){
+       $scope.lists=[
+           {scorecode:3140203325,name:"张三"},
+           {scorecode:3140203326,name:"李四"},
+           {scorecode:3140203327,name:"王二"},
+           {scorecode:3140203328,name:"乾坤"},
+           {scorecode:3140203329,name:"孙权"},
+           {scorecode:3140203323,name:"赵发"},
+           {scorecode:3140203322,name:"周公"},
+           {scorecode:3140203324,name:"吴三桂"},
+           {scorecode:3140203321,name:"郑成功"}
+       ]
+    });
+
+    /**
+     * 用ng-repeat生成表格是完美契合的
+     * 表单数据可以从数据库或服务器获取在页面上动态生成
+     * 利用过滤器进行一些操作如排序等
+     */
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>

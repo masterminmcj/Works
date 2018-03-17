@@ -1,0 +1,336 @@
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,
+footer, header, menu, nav, section, summary,
+time, mark, audio, video {
+    margin:0;
+    padding:0;
+    border:0;
+    outline:0;
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent;
+}
+h1,h2,h3,h4,h5,h6,em,i {
+    font-weight: 100;
+    font-style: normal
+}
+ul,ol,li {
+    list-style-type: none
+}
+.container{
+    width:100%;
+    height: 100%;
+    font-size: 14px;
+}
+.nav{
+    width: 100%;
+    padding: 10px;
+    background-color: #f2f2f2;
+    border-bottom: 1px solid #eee;
+}
+
+.nav span span,.nav span a,.nav span{
+    color: #999;
+}
+.nav span span.glyphicon{
+    color: #c40000;
+}
+.nav>span:first-child{
+    margin-left: 100px;
+}
+.nav>span{
+    margin-left: 30px;
+}
+span.my-order{
+    margin-left: 40%;
+}
+.nav>span>span{
+    padding: 0 2px;
+}
+
+.nav>span>a:hover{
+    color: #c40000;
+    text-decoration: none;
+}
+.nav>span>a:hover >span{
+    color: #c40000;
+}
+.search_bar{
+    position: relative;
+    margin-top: 5px;
+}
+
+.search_bar>.logo,.search_bar>.search_bar_right{
+    display: inline-block;
+    margin-top: 5px;
+}
+
+
+.search_bar>.logo{
+    margin-left: 30px;
+}
+
+.search_bar_right{
+    width: 35%;
+    margin-left: 100px;
+    vertical-align: middle;
+}
+.search_item{
+
+    width: 100%;
+    height: 40px;
+    background-color: #c40000;
+    display: inline-block;
+    padding: 2px;
+}
+.search_item>input[type=text]{
+    width: 72%;
+    height: 100%;
+    border: 1px solid transparent;
+    outline: none;
+}
+.search_item>button{
+    font-size:20px;
+    font-weight: bold;
+    color: white;
+    background-color: #c40000;
+    width: 22%;
+    border: none;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.search_item_menu{
+    margin-top: 3px;
+    margin-left: -10px;
+}
+.search_item_menu>a{
+    text-decoration: none;
+    color: #999;
+    margin: 0 20px;
+}
+.search_item_menu>span{
+    color: #999;
+}
+.search_item_menu>a:hover{
+    text-decoration: none;
+    color: #c40000;
+}
+.ad_img{
+    margin-top: 10px;
+}
+.sort_bar{
+    width: 100%;
+    margin:40px 0 0 40px
+}
+.sort_bar_left,.sort_bar_right{
+    display: inline-block;
+    collapse: collapse;
+}
+
+.sort_bar_left tr td{
+   height: 25px;
+    border: 1px solid #aaa;
+    font-size: 12px;
+    line-height: 25px;
+    text-align: center;
+}
+.sort_bar_left tr td:first-child,.sort_bar_left tr td:hover{
+    background-color: #EEE;
+}
+.sort_bar_left tr td a{
+    color:#a8958f;
+    padding: 0 1px;
+}
+.sort_bar_left tr td a:hover{
+    color: #c40000;
+    text-decoration: none;
+}
+
+.sort_input{
+    outline: none;
+    display: inline-block;
+    width: 60px;
+
+}
+.sort_bar_right tr td span{
+    display: inline-block;
+padding: 2px 3px;
+    background-color: #EEE;
+    border-bottom: 1px solid #aaa;
+    border-top: 1px solid #aaa;
+    color:#a2958f;
+
+}
+.goods_display{
+    width: 100%;
+    font-size: 12px;
+    height: 100%;
+    padding: 50px 0;
+}
+.goods_display_item{
+    width: 100%;
+    padding: 0 60px;
+}
+.cols1{
+    display: inline-block;
+    width: 22%;
+    overflow: hidden;
+    height: 340px;
+    margin-left: 8px;
+    border: 3px solid transparent;
+}
+.cols1:hover{
+    border: 3px solid #c40000;
+text-decoration: none;
+}
+.cols1>span{
+    display:block;
+    margin: 5px 0;
+}
+
+.cols1 .price{
+    font-size:22px;
+    color: #c40000;
+}
+.cols1 .goods_describle{
+    font-size: 13px;
+    color: black;
+}
+.cols1 .goods_describle:hover{
+    text-decoration: underline;
+    color: #c40000;
+}
+.cols1 .tmao_sell{
+    text-decoration: underline;
+    color: #aaa;
+}
+.cols1 .tmao_sell:hover{
+    color: #c40000;
+}
+.sale_information{
+    collapse: collapse;
+}
+
+.sale_information tr td{
+    height: 30px;
+    border: 1px solid #EEE;
+    line-height: 30px;
+    text-align: center;
+padding: 0 3px;
+    color: #aaaaaa;
+}
+.sale_information tr td:nth-child(1){
+    width: 50%;
+}
+.sale_information tr td:nth-child(2){
+     width: 40%;
+ }
+.sale_information tr td:nth-child(3){
+      width: 20%;
+  }
+.sale_information tr td .sale_count{
+    color: #be8c6f;
+    font-size: 13px;
+}
+.sale_information tr td .comment_count{
+     color: #3155ff;
+     font-size: 13px;
+ }
+/*----------------*/
+.ensure{
+    margin-top: 10px;
+    width: 90%;
+
+    padding: 20px 60px;
+    overflow: hidden;
+    border-top: 1px solid #e8e8e8;
+    border-bottom: 1px solid #e8e8e8;
+}
+
+
+
+
+.link-group{
+    width: 100%;
+    overflow: hidden;
+}
+.link-group-item{
+    display: block;
+    vertical-align: top;
+    width: 20%;
+    float: left;
+    text-align: center;
+    padding-top: 30px;
+}
+
+.link-group-item>span{
+    display: block;
+    font-size: 18px;
+    color: #333;
+    font-weight: bold;
+}
+.link-group-item>a{
+    display: block;
+    padding-top: 3px;
+    font-size: 12px;
+    color: #999;
+}
+.link-group-item>a:hover{
+    color: #c40000;
+    text-decoration: none;
+    cursor:pointer;
+}
+
+.copyRight{
+    overflow:visible;
+    width: 100%;
+    position: relative;
+    clear: both;
+    margin-top: 30px;
+    padding: 10px 70px;
+    font-size: 12px;
+    color: white;
+    background-color: black;
+}
+
+.copy-right-col1,.copy-right-col2,.copy-right-col3,
+.copy-right-col4,.copy-right-col5{
+    padding: 0 5px;
+    margin-bottom: 20px;
+}
+
+.copy-right-col1>a,.copy-right-col2>a,
+.copy-right-col2>span,.copy-right-col2>span{
+    color: white;
+    display: inline-block;
+    padding: 0 4px;
+    text-decoration: none;
+}
+.copy-right-col1>a:hover,.copy-right-col2>a:hover{
+    text-decoration: none;
+    color: white;
+}
+.copy-right-col3{
+    color: #999;
+}
+.copy-right-col4{
+    color: #666;
+}
+
+
+.maotou{
+    position: absolute;
+    top: -31px;
+    left: 80px;
+    z-index: 10000;
+
+}

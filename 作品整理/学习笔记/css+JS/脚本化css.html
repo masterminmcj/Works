@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="1.css" rel="stylesheet">
+</head>
+<style>
+
+    .box{
+        width: 300px;
+        height: 300px;
+        background-color: red;
+        padding: 10px;
+   position: relative;
+        /*box-sizing:border-box;*/
+    }
+    .box_item{
+        width: 200px;
+        height: 200px;
+        background-color: green;
+        border: 3px solid blue;
+        margin: 30px;
+        position:absolute;
+        left: 0;
+        top:0;
+    }
+
+    .div2{
+        overflow: hidden;
+        margin: 20px;
+    }
+    .div2_item1,.div2_item2,.div2_item3{
+        width: 300px;
+        height: 200px;
+        float: left;
+
+
+    }
+
+    .div2_item1{
+        background-color: red;
+    }
+    .div2_item2{
+        background-color: #65ff2d;
+        display: none;
+    }
+    .div2_item3{
+        background-color: blue;
+    }
+
+
+
+    .div3{
+        width: 200px;
+        height: 200px;
+        background-color: pink;
+        border: 1px solid;
+        margin: 30px;
+    }
+
+
+    .topic{
+        font-size: 30px;
+        font-style: italic;
+    }
+    .lightHeight{
+        color: red;
+    }
+.bggreen{
+    background-color: green;
+}
+</style>
+<body>
+
+
+<div class="box">
+    <div class="box_item"></div>
+
+</div>
+
+
+<div class="div2">
+    <div class="div2_item1"></div>
+    <div class="div2_item2"></div>
+    <div class="div2_item3"></div>
+</div>
+
+<!-------------css ainamte----------->
+
+<h2>animate</h2>
+<div class="div3"></div>
+
+
+
+<!--脚本化css className classList-->
+
+<div>
+    <h2 class="topic lightHeight">脚本化css</h2>
+    <p>实现方法:专门定义一个类的css属性,当需要用到该属性时<span class="lightHeight" style="background-color: green">动态的</span>为该元素添加该类名</p>
+</div>
+
+
+
+<script>
+
+var div3=document.getElementsByClassName('div3')[0];
+
+//定义一个抖动的动画,接收三个参数,分别是;元素,抖动幅度,动画时长
+//原理是通过一定函数来改变元素的Left的大小实现左右抖动
+function Shake(ele,dis,times){
+
+var start=new Date().getTime();
+var originstyles=ele.style.cssText;//原始未添加动画样式
+ele.style.position="relative";    //定义元素为定位属性
+dis=dis||5;                      //默认幅度为5px
+times=times||500;                   //默认时长为500ms
+animate();                        //执行动画函数
+
+
+function animate(){
+var t=(new Date().getTime())-start;  //获取当前已执行动画时长
+        var num=t/times;           //占总时长的比例
+
+        if(num<1){                    //动画为执行完
+            var x=dis*Math.sin(num*4*Math.PI); //动画执行函数
+        ele.style.left=x+'px';             //改变元素位置
+setTimeout(animate,Math.min(25,times-t))    //控制动画速度
+        }
+        else {
+            ele.style.cssText=originstyles;//执行完毕恢复原样式
+        }
+
+    }
+}
+
+div3.onclick=function () {
+    Shake(div3,10,100)
+};
+
+//获取元素的计算属性,是一个对象该对象包括元素的所有样式,不管是通过内联样式还是通过链接样式表定义的
+//获取的样式是只读的
+var st=getComputedStyle(div3,null);
+console.log(st.width);
+
+
+
+//className获取元素的所有类名.以字符串形式返回
+//classList
+ var h2=document.getElementsByClassName('topic')[0];
+ console.log(h2.className);//"topic lightHeight"
+    console.log(h2.classList[0])//topic
+h2.classList.add("bggreen")//classList对象上有三个方法，add(),remove(),toggle();分别为添加类名，删除，增加／删除类名
+
+console.log('------------------------------------*****************-----------');
+    //CssStyleSheet对象
+
+//styleSheets为一个数组，保存页面中所有的样式表，按文档流的顺序存储，包括内联样式表和外联样式表不包括行间样式
+    var stylerule=document.styleSheets[1].cssRules;//获取的是内联样式表中的所有ｃｓｓ规则
+//cssRules也为一个数组，存储着该样式表中所有的样式,每一个{}是数组中的一项,其中cssText保持着其css代码
+//除去cssRules属性外还有insertRule(),和removeRule()方法，用来增删css
+
+    console.log(stylerule)
+
+
+
+</script>
+</body>
+</html>

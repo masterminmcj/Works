@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="application/javascript" src="JSfile/angular.min.js"></script>
+</head>
+<body>
+<div ng-app="myapp" ng-controller="mycontroller">
+    <select ng-options="x.sitename for x in sites" ng-model="websites"
+ style="width: 100px" >
+</select>
+<h2>{{"你选择的网址是:"+websites.sitename}}</h2>
+<p>{{"网站为:"+websites.urls}}</p>
+</div>
+<script>
+    var app=angular.module("myapp",[]);
+    app.controller("mycontroller",function($scope){
+        $scope.sites=[
+            {sitename:"百度",urls:"www.baidu.com"},
+            {sitename:"谷歌",urls:"www.google.com"},
+            {sitename:"火狐",urls:"www.firefox.com"},
+            {sitename:"腾讯",urls:"www.tencent.com"}
+        ]
+    })
+</script>
+
+
+</body>
+</html>

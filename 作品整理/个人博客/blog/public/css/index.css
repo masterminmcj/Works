@@ -1,0 +1,284 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+.containers{
+    width: 100%;
+    background-color: #EEE;
+
+}
+.top_nav_imgs{
+    width: 100%;
+    height: 260px;
+    background-color: red;
+    overflow:hidden;
+}
+
+.nav_position{
+    width: 100%;
+    height: 45px;
+    line-height: 45px;
+    background-color: #828a72;
+    color: #ffdba3;
+    font-size: 20px;
+    padding-left: 50px;
+    letter-spacing: 5px;
+}
+.nav_position a{
+    text-decoration: none;
+    color: #7babf5;
+}
+.pos{margin-left: 50px}
+
+.top_nav_imgs{
+    width: 100%;
+    height: 240px;
+    background-color: red;
+}
+/*登录后的导航样式*/
+#logined_mess{
+    color: white;
+    font-size: 16px;
+
+}
+
+.nav_position img{
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+}
+.nav_search{
+    width: 300px;
+    height: 35px;
+    border-radius: 5px;
+}
+.nav_search{
+    margin-left: 350px;
+    padding-right: 45px;
+    color: black;
+    font-size: 20px;
+    background-color: #EEE;
+}
+.glyphicon-search{
+    position: relative;
+    left: -45px;
+    top:5px;
+    color: black;
+}
+.nav_search:hover{
+    outline: none;
+}
+
+
+.main_content{
+    width: 100%;
+    height: 100%;
+    padding-bottom: 10px;
+    overflow: hidden;
+}
+.main_content_left{
+    width:75%;
+   height: 100%;
+    float: left;
+    background-color: white;
+}
+.main_content_right{
+    width: 25%;
+    height: 450px;
+float: left;
+
+
+}
+.content_title{
+    width: 100%;
+    border-bottom: 2px solid #aaa;
+
+}
+.content_title span:first-child{
+    color: #ff709e;
+    font-size: 25px;
+    margin-left: 50px;
+    line-height: 50px;
+}
+
+.content_title span:nth-child(2){
+    font-size: 24px;
+    margin-left: 10px;
+    color: #ffbf9d;
+    line-height: 50px;
+}
+
+#cans{
+    width: 65%;
+    height: 50px;
+ position: relative;
+    top:10px;
+    padding:0 20px;
+}
+.study_line{
+    color: #8a6d3b;
+    font-size: 20px;
+}
+
+.article_item{
+width: 100%;
+    padding: 15px;
+border-bottom: 2px solid #eee;
+    clear: both;
+    position: relative;
+    overflow: auto;
+}
+.article_item h2{
+    font-size: 25px;
+    color: #f5b22d;
+    text-align: center;
+    clear: both;
+
+}
+.article_img{
+ height: 170px;
+  width: 170px;
+    border: 1px solid #eee;
+    padding: 10px;
+    float: left;
+
+}
+.article_content{
+
+    margin-left: 10px;
+    border: 1px solid #EEE;
+    width: 75%;
+    height: 170px;
+    font-size: 20px;
+    padding: 10px;
+float: left;
+
+
+}
+article{margin-top: 20px}
+
+.article_content a{
+    text-decoration: none;
+    padding: 10px;
+    background-color: #ffc86a;
+    position:absolute;
+    left:760px;
+    top: 195px;
+    border-radius: 5px;
+color: #2b2b2b;
+}
+
+
+.time_tp{
+    width: 94%;
+    height: 30px;
+    clear: both;
+    background-color: #EEE;
+   margin-top: 20px;
+    position: relative;
+    line-height: 35px;
+    top:10px
+}
+.time_tp .glyphicon-time,.date_time,.author,.article_form{
+    color: #666;
+    font-size: 20px;
+    margin-left: 30px;
+}
+
+.date_time{
+    margin-left: 30px;
+}
+
+.article_form,.author{
+    margin-left: 50px;
+}
+
+
+
+/*右侧样式*/
+.content_title_r{
+    font-size: 20px;
+height: 69px;
+    border-bottom: 2px solid #aaa;
+    line-height: 85px;
+}
+.content_title_r span:first-child{
+    color: #ffa67d;
+    margin-left: 100px;
+}
+.content_title_r span:nth-child(2) {
+color: #ffa67d;
+    margin-left: 20px;
+}
+
+/*传送门*/
+.r_nav{
+
+    width: 100%;
+    height: 240px;
+    border-left: 2px solid #aaa;
+
+}
+.r_nav h2,.news h2,.study_recode h2{
+    text-align: center;
+    color: #eebb56;
+    font-size: 23px;
+    background-color: #8a8767;
+    padding: 5px;
+}
+.r_nav ul,.news ul,.study_recode ul{
+    margin-left: 15px;
+    list-style: none;
+}
+.r_nav ul li{
+    height: 45px;
+  text-align: center;
+    line-height: 45px;
+}
+.r_nav ul li a{
+    font-size: 20px;
+}
+
+
+.r_nav ul li:nth-child(1){
+    background-color: #ffe033;
+}
+
+/*新闻*/
+.news,.study_recode{
+    border-left: 2px solid #aaa;
+    margin-top: 20px;
+    width: 100%;
+
+}
+.news ul li,.study_recode ul li{
+    height: 45px;
+    margin: 5px;
+}
+.news ul li a{
+
+    color: #ee8dd6;
+    font-size: 18px;
+}
+.study_recode ul li a{
+    font-size: 18px;
+    color: #6aff60;
+}
+
+.article_content {
+    overflow: hidden;
+    text-overflow: ellipsis;
+white-space: nowrap;
+}
+
+
+.article_content:nth-child(odd){
+    background-color: red;
+}
+.article_content:nth-child(even){
+    background-color: #ffaa39;
+}
+.more:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}

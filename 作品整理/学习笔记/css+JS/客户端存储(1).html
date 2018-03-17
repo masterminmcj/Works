@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>客户端存储(1)</title>
+</head>
+<style>
+    input[type='text']{
+        width: 300px;
+        height: 30px;
+        border-radius: 3px;
+        outline: none;
+        border: 1px solid;
+    }
+    .btn{
+        padding:2px 5px;
+        background-color: blue;
+        line-height: 30px;
+        color: white;
+        border: 1px solid;
+        text-align: center;
+
+    }
+    .btn:hover{
+        background-color: white;
+        color: blue;
+    }
+    .savedMessage{
+        padding: 5px;
+        color: green;
+        font-size: 20px;
+    }
+</style>
+<body>
+<h2>1:web存储(localStorge sessionStorge)</h2>
+<input type="text" placeholder="输入信息并进行存储" class="storgeMess"><button class="btn">存储信息</button>
+
+
+<div class="getLocalStorge"></div>
+
+
+<input type="text" placeholder="输入要修改的数据" class="changeData">
+<button class="btn1">点击修改</button>
+
+
+<h2>2:cookie</h2>
+<button class="setCookie">show Cookie</button>
+<div class="showCookie"></div>
+
+
+<h2>简单的离线缓存例子</h2>
+
+<textarea class="editor"></textarea>
+ <button class="save">保存</button>
+
+
+<div class="savedMessage"></div>
+
+
+<h2>视频和音频</h2>
+<video controls class="videos" style="display: block;width: 400px;height: 300px">
+    <source src="./test.mkv" >
+</video>
+<button class="controlPlay">点击播放</button>
+<button class="controlStop">点击停止</button>
+播放速度:
+<select class="selectSpeed">
+<option value="0.5">0.5倍速</option>
+<option value="1" selected>1倍速</option>
+<option value="1.5">1.5倍速</option>
+</select>
+
+
+
+<h2>最简单的svg</h2>
+
+最新浏览器支持书写方式:<svg width="300" height="100" >
+<circle r='30'cx="50" cy="50" fill="red" />
+    <rect height="100" width="100" x="100" y="0" fill="green"/>
+</svg>
+<script>
+    //1 localStroge sessionStroge
+    //特点:(1) 都是window对象的一个属性,但都代表着同一个Storge对象一个持久化关联数组
+    //区别:存储的有效期和作用域不同
+
+    //localStorge关闭页面后存储的信息依然存在
+    //sessionStorge关闭页面后信息会丢失
+var storgeMess=document.getElementsByClassName('storgeMess')[0];
+var btn=document.getElementsByClassName('btn')[0];
+var getLocalStorge=document.getElementsByClassName('getLocalStorge')[0];
+
+
+var Amess=localStorage.mess;
+btn.addEventListener('click',function(){
+if(Amess){
+    alert('该信息已存在!');
+    getLocalStorge.innerHTML=localStorage['mess'];
+    storgeMess.value=''
+}
+if(!storgeMess&&storgeMess.value.trim()===''){
+    alert('信息不能为空!')
+}
+else {
+    localStorage.mess=storgeMess.value;
+    getLocalStorge.innerHTML=localStorage['mess'];
+    storgeMess.value=''
+
+}
+});
+
+console.log(localStorage['mess']);
+
+//注意-->1:localStorge存储的数据是永久的,除非用户特意删除或配置
+//2:localStroge存储数据作用域是限制在文档级别(文档级别是由协议+主机+端口决定)也就是说同源的文档共享
+//localStorge数据而非同源则无法访问
+//3:localStorge的作用域受浏览器限制,不同浏览器访问同源文档也不能共享数据
+
+
+
+//--------------------------------------------
+//存储事件 当localStorge或sessionStorge中存储的数据发生改变时,在其可见的窗口就会触发存储事件
+//但操作改变数据的窗口不会触发
+var changeData=document.getElementsByClassName('changeData')[0];
+var btn1=document.getElementsByClassName('btn1')[0];
+
+btn1.onclick=function () {
+    if(!changeData.value&&changeData.value.trim()===''){
+        alert('输入不能为空!')
+    }
+    else {
+  localStorage['mess']=changeData.value;
+  console.log('修改成功!')
+    }
+};
+
+
+console.log(localStorage['mess']);
+
+window.addEventListener('storage',function (e) {
+    e=e||window.event;
+
+    console.log(e.oldValue,e.newValue)//可以打印出未修改前的数据以及修改后的数据
+});
+
+
+//cookie
+var setCookie=document.getElementsByClassName('setCookie')[0];
+var getCookie=document.getElementsByClassName('showCookie')[0];
+
+
+setCookie.addEventListener('click',function () {
+    //normal attribute
+
+    //1:max-age  //lose time
+    //2:path
+    //3:domain
+    //4:secure
+    document.cookie='name=mastermin;password=123456;time=2018;max-age=60';
+});
+
+    getCookie.innerHTML=document.cookie
+
+
+
+//离线缓存更新
+window.onload=function () {
+    var editor = document.getElementsByClassName('editor')[0];
+    var save = document.getElementsByClassName('save')[0];
+    var savedMessage = document.getElementsByClassName('savedMessage')[0];
+    if (localStorage.mess === null) {
+        localStorage.mess = ''
+    }
+
+
+    editor.addEventListener('input', function () {
+        localStorage.mess = editor.value
+    });
+
+
+    save.onclick = function () {
+        savedMessage.innerHTML = localStorage.mess
+    }
+
+};
+
+
+
+//多媒体部分
+    var controlPlay=document.getElementsByClassName('controlPlay')[0];
+    var controlStop=document.getElementsByClassName('controlStop')[0];
+var videos=document.getElementsByClassName('videos')[0];
+var selectSpeed=document.getElementsByClassName('selectSpeed')[0];
+controlPlay.onclick=function () {
+    videos.play();
+};
+controlStop.onclick=function () {
+  videos.pause();
+};
+selectSpeed.onchange=function (e) {
+    videos.playbackRate=parseFloat(e.target.value);
+}
+</script>
+</body>
+</html>

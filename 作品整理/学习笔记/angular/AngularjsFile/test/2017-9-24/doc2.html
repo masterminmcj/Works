@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="test">
+<head>
+    <meta charset="UTF-8">
+    <title>angular指令</title>
+    <script src="../../JSfile/angular.min.js"></script>
+</head>
+<body>
+<div ng-controller="ctr1">
+    <p mydirective></p>
+</div>
+
+<div ng-controller="ctr2">
+    <p class="mydirective"></p>
+</div>
+<script>
+    //笔记
+    /**
+     * 通过module.directive来扩展自己的指令
+     *return的内容中
+     *restrict定义指令的可以使用的方式
+     *  E:通过元素标签
+     *  A：通过属性
+     *  C：通过类的方式
+     *  M:通过注释方式
+     *template/templateUrl 通过直接模板或者调用其他文件作为模板
+     *  templateUrl的html中可以使用其调用下的父作用域的controller下的数据
+     *  如本例中：模板中的{{user.name}}中的数据都会被其下controler下的数据替换
+     */
+
+angular.module('test',[])
+    .controller('ctr1',function ($scope){
+        $scope.user={
+            name:'mastermin',
+            job:'student'
+        }
+    })
+    .controller('ctr2',function ($scope){
+        $scope.user={
+            name:'张三',
+            job:'teacher'
+        }
+    })
+    .directive('mydirective',function(){
+
+        return{
+            restrict:'EAC',
+            templateUrl:'1.html'
+        }
+    })
+</script>
+</body>
+</html>

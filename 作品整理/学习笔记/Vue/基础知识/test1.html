@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+<div id="div1">
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script>
+
+
+    function qudou(){
+
+if(window.tag){
+
+    window.tag=true;
+
+console.log(111);
+setTimeout(function () {
+  window.tag=false
+},1000)
+
+}
+
+    }
+
+
+    window.addEventListener('click',qudou)
+</script>
+</body>
+</html>

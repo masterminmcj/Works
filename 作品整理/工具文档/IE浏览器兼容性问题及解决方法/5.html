@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>最小高度</title>
+</head>
+<style>
+    .div1{
+        height: 3px;
+        background-color: red;
+        /*overflow: hidden;   --for IE6*/
+    }
+</style>
+<!--
+正常浏览器会显示一个高度为3的元素而在IE6会显示一个高度为19px的元素，
+因为在IE6下默认的最小高度为19px
+
+解决方法:添加overflow:hidden
+-->
+<body>
+<div class="div1"></div>
+</body>
+</html>

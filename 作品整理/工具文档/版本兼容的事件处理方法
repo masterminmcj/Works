@@ -1,0 +1,36 @@
+var eventUnitl={
+  getEvent:function(e){
+      return e||e.window.e
+  },
+    getTarget:function(e) {
+      return e.target||e.srcElement
+  },
+    bindEvent:function (ele,type,handler) {
+      if(ele.addEventListener) {
+          ele.addEventListener(type, handler, false);
+          return handler //最后结果返回函数以便于清除事件的绑定
+      }
+      if(ele.attachEvent){
+          ele.attachEvent('on'+type,handler);
+          return handler
+      }
+
+    },
+    removeEvent:function(ele,type,handler){
+if(ele.removeEventListener){
+    return ele.removeEventListener(type,handler)
+}
+if(ele.detachEvent){
+    return ele.detachEvent('on'+type,handler)
+}
+    },
+   preventDefault:function (e) {
+       return ele.preventDefault()||(ele.returnValue=false)
+   },
+    stopPropataion:function (e){
+        return e.stopPropataion()||(e.cancelable=true)
+    }
+
+
+};
+

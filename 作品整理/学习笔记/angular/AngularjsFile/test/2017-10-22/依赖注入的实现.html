@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myapp">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script src="../../JSfile/angular.min.js"></script>
+</head>
+<body ng-controller="Ctr">
+
+<div>{{a}}</div>
+<div>{{b}}</div>
+
+<script>
+
+//实现方法一使用Angular注入器的语法糖用['注入对象',callback]
+/*
+    angular.module('myapp',[])
+        .factory('greeting',[function() {
+          var fn={};
+
+          fn.add=function(a,b){
+              return a+b
+          };
+
+          return{
+              fn:fn
+          }
+
+        }])
+        .controller('Ctr',['$scope','greeting',function($scope,greeting) {
+            $scope.a='aaaaaaaaaa';
+            $scope.b=greeting.fn.add(100,200)
+
+        }])
+*/
+
+//2用注入器实现
+
+    var myctr=function($scope,greeting) {
+    $scope.a='aaaaaa';
+    $scope.b=greeting.fn.add(1,2)
+    };
+//定义要注入的依赖,使用$inject服务
+myctr.$inject=['$scope','greeting'];
+angular.module('myapp',[])
+    .controller('Ctr',myctr)
+    .factory('greeting',function() {
+        var fn={};
+        fn.add=function (a,b) {
+            return a+b
+        };
+        return{
+            fn:fn
+        }
+    })
+
+
+</script>
+</body>
+</html>

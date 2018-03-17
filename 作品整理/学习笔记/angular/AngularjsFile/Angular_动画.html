@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="application/javascript" src="JSfile/angular.min.js"></script>
+<script type="application/javascript" src="JSfile/angular-animate.min.js"></script>
+</head>
+<style type="text/css">
+    .div1{width: 500px;height: 500px;background-color: #02f}
+</style>
+<body>
+<div ng-app="myapp">
+
+   请选择显示或隐藏:<input type="checkbox" ng-model="choice" checked="true">
+
+    <div class="div1" ng-hide="choice">
+        <h1>这是主体内容</h1>
+    </div>
+
+
+
+</div>
+<script>
+    var app=angular.module("myapp",["ngAnimate"])
+
+</script>
+</body>
+</html>

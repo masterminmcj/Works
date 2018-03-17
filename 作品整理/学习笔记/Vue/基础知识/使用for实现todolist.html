@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>todolist</title>
+</head>
+<style>
+    body{
+        font-size: 18px;
+    }
+    .txt{
+        width: 200px;
+        height: 35px;
+        border-radius: 5px;
+    }
+    .btn{
+        margin-left: 10px;
+    }
+    .btn:hover{
+      cursor: pointer;
+    }
+</style>
+<body>
+<div id="mydiv">
+<input type="text" v-on:keyup.enter="addTask" v-model="my_input" class="txt" placeholder="添加新的todo">
+
+<ul>
+   <todo v-for="(x,index) in todolist" v-bind:text="x.text" v-bind:index="index" v-on:delete="todolist.splice(index,1)"></todo>
+</ul>
+</div>
+
+<div id="mydiv2">
+    <ul>
+        <num v-for="n in arr1" v-bind:n="n"></num>
+    </ul>
+</div>
+
+<div id="mydiv3">
+    <h2>表单控件</h2>
+
+    <h4>数据绑定(文本类)</h4>
+    <!--<input type="text" class="txt" v-model="text">-->
+    <textarea v-model="text"></textarea>
+<p>输出数据:{{text}}</p>
+    <h4>按钮，复选框类</h4>
+<input type="checkbox" v-model="check">
+<span>{{check}}</span>
+</div>
+
+
+<script type="application/javascript" src="js/vue.js"></script>
+<script>
+Vue.component('todo',{
+    template:'<li>{{text}}<button type="button" class="btn" v-on:click="$emit(\'delete\')">&times;</button></li>',
+    props:['text']
+});
+
+Vue.component('num',{
+
+    template:'<li>{{n}}</li>',
+    props:['n']
+});
+
+var vm1=new Vue({
+   el:'#mydiv2',
+    data:{
+       arr:[1,2,3,4,5,6,7,8]
+    },
+    computed:{
+        arr1:function(){
+            return this.arr.filter(function(n){
+                return n%2===0
+            })
+        }
+    }
+});
+
+
+var vm=new Vue({
+    el:'#mydiv',
+    data:{
+        my_input:'',
+     todolist:[
+         {text:'eat denner'}
+         ]
+    },
+methods:{
+        addTask:function() {
+            if(this.my_input&&this.my_input.trim())
+            this.todolist.push({text: this.my_input});
+            this.my_input = '';
+        }
+}
+});
+
+var vm2=new Vue({
+    el:'#mydiv3',
+    data:{
+        text:'',
+        check:false
+    }
+
+})
+
+</script>
+</body>
+</html>

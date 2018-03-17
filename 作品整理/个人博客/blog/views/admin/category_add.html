@@ -1,0 +1,32 @@
+{% extends './nav-public.html'%}
+
+{% block title %}用户管理{% endblock %}
+
+{% block admin %}
+{{userInfo.username}}
+{% endblock %}
+{% block cssLink %}
+<link href="/public/css/categoryAdd.css" rel="stylesheet">
+<link href="/public/css/pagegation.css" rel="stylesheet">
+
+{% endblock %}
+
+{% block content%}
+<div class="nowposition">
+    <ol class="breadcrumb">
+        当前位置：
+        <li><a href="/admin/category_index">首页</a></li>
+        <li class="active">分类添加</li>
+    </ol>
+</div>
+
+<!--显示用户列表-->
+<form action="/api/category/add" method="post" name="categoryAdd">
+    <label id="categoryInput">
+    请输入要添加的分类:<input type="text" id="add_category" name="categoryAdd">
+    </label>
+    <label id="Submit">
+        <input type="submit" value="提交">
+    </label>
+</form>
+{% endblock %}

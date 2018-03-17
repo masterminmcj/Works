@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    .div1{
+        width: 100px;
+        height: 100px;
+        background-color: red;
+    }
+    .div2{
+        width: 200px;
+        height: 100px;
+        background-color: green;
+    }
+</style>
+<body>
+<button class="box">
+
+    <input type="text" class="div1">
+    <input type="checkbox">
+
+</button>
+
+
+<div class="div2">右键隐藏</div>
+<script>
+    //键盘常用的事件为keydown,keyup,keypress,
+    //其中事件属性key为新增的属性,返回一个字符串指示用户按下的是哪个键,相比之下传统的keyFValue属性显得难以使用
+    window.addEventListener('keydown',function (e) {
+      e=e||window.e;
+      console.log(e.key)
+    });
+    window.addEventListener('keypress',function (e) {
+        e=e||window.e;
+        console.log('***'+e.key+'***')
+    });
+
+//focusin,focusout是h5新增的事件,用来替换focus和blur事件,与其区别的是这两个新增的事件是冒泡的
+    //addEventListener()接收三个参数,用来为元素注册事件处理程序,第一参数是事件类型注意不带on,
+    // 第二个参数是处理程序,可以为具名函数或者为匿名函数,第三个参数为布尔值用来控制事件触发流向
+    //true时,为事件捕获
+    //false为默认值,为事件冒泡
+    var div1=document.getElementsByClassName('div1')[0];
+    var box=document.getElementsByClassName('box')[0];
+    div1.addEventListener('focusin',function () {
+        console.log('元素获取了焦点')
+    },false);
+    box.addEventListener('focusin',function () {
+        console.log('box获取了焦点')
+    },false);
+
+    div1.addEventListener('blur',function () {
+        console.log('元素失去了焦点')
+    })
+
+    div1.addEventListener('textinput',function (e) {
+        console.log(e.k)
+    });
+
+
+    var div2=document.getElementsByClassName('div2')[0];
+    div2.addEventListener('contextmenu',function (e) {
+        e.preventDefault();
+        var show='none';
+        div2.style.display=show;
+        
+    })
+
+</script>
+</body>
+</html>

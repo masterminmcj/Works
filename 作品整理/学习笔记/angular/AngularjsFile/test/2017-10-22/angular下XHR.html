@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myapp">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../../JSfile/angular.min.js"></script>
+</head>
+<body ng-controller="Ctr">
+<p>{{datas}}</p>
+
+<script>
+    angular.module('myapp',[])
+        .controller('Ctr',['$scope','$http',function($scope,$http){
+//1  标准的方法
+   /*         $http({
+                method:'GET',
+                url:'./doc/1.txt'
+            }).then(function(data) {
+                $scope.datas=data.data
+            },function() {
+                console.log('XHR失败了')
+            })*/
+
+
+   //2 快捷方法 默认的method:'GET'
+            $http.get('./doc/1.txt').then(function(data) {
+                $scope.datas=data.data
+            })
+
+        }])
+
+</script>
+</body>
+</html>

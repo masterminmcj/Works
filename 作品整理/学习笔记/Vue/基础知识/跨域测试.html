@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>跨域</title>
+</head>
+<body>
+
+<button class="btn">
+    点击获取资源
+</button>
+
+<div class="resText" style="color: #00FF00"></div>
+
+<script>
+
+    window.onload=function () {
+        var btn=document.getElementsByClassName('btn')[0];
+        var resText=document.getElementsByClassName('resText')[0];
+
+        function doXHR() {
+
+            var xhr=new XMLHttpRequest();
+//            xhr.setRequestHeader(Origin,"http://localhost:8085");
+            xhr.withCredentials=true;
+            xhr.onreadystatechange=function () {
+
+                if(xhr.readyState===4&&xhr.status===200){
+                    resText.innerHTML=xhr.responseText
+                }
+
+            };
+            xhr.timeout=2000;
+            xhr.ontimeout=function () {
+                alert('连接超时')
+            };
+            var url='http://localhost:8085';
+            xhr.open('GET',url,true);
+            xhr.send()
+
+
+        }
+
+
+            btn.onclick=function () {
+    doXHR()
+};
+
+
+
+
+
+
+    };
+
+
+
+
+
+</script>
+</body>
+</html>

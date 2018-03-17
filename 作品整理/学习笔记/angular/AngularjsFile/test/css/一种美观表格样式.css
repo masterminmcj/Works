@@ -1,0 +1,32 @@
+.tb{
+    border-collapse:collapse ;
+    font-size: 18px;
+}
+.tb tr th{
+    background-color: #999;
+    border: 1px solid red;
+}
+
+
+.tb tr td{
+    width: 100px;
+    border: 1px solid #666;
+    text-align: center;
+}
+
+.tb tr:nth-child(2n){
+    height: 45px;
+    background-color: #EEE;
+}
+.tb tr:nth-child(2n-1){
+    height: 45px;
+    background-color: #aaa;
+}
+
+.tb tr:hover{
+    height: 45px;
+    background-color: #fff2ab;
+}
+.tb tr td:hover{
+    font-size: 28px;
+}

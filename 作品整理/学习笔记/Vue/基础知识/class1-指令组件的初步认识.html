@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue的学习</title>
+</head>
+<style>
+
+    .blue{
+    width: 200px;
+        height: 100px;
+        background-color: blue;
+    }
+    .red{
+        width: 100px;
+        height: 200px;
+        background-color: red;
+    }
+</style>
+<body>
+
+<div class="myapp">
+
+<!--<todoList v-for="item in Lists" v-bind:todo="item">
+
+</todoList>-->
+   <!-- <todo-list v-for="item in Lists" v-bind:todo="item"></todo-list>
+<div>现在时间为:{{now()}}</div>-->
+
+<!--<div v-bind:class="{blue:istrue,red:isfalse}"></div>
+
+<button v-on:click="changeCls">点击改变class</button></div>-->
+
+<!--<div v-bind:style="divStyle">我是通过vue来添加样式的</div>-->
+
+<!--<h1-comp></h1-comp>-->
+
+
+    <!--<div id="div1">
+        <p>点击总次数为:{{total}}</p>
+<button-counter v-on:incretotal="increTotals"></button-counter>
+<button-counter v-on:incretotal="increTotals"></button-counter>
+
+    </div>-->
+
+
+
+  <!--  <div class="div1">
+
+        <button v-on:click="tounchadd">adds</button>
+
+        <event-test ref='ppp'></event-test>
+    </div>-->
+
+
+    <!--插槽-->
+
+<div>
+    <h1>父组件</h1>
+    <p>我是父组件中内容</p>
+
+    <cmps>
+        <p>我是子组件中的内容</p>
+    </cmps>
+</div>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script>
+
+
+//组件
+/*
+Vue.component('todo-list',{
+    props:['todo'],
+    template:'<li>{{todo.name}}:{{todo.job}}</li>'
+});
+*/
+
+/* //最初级的应用
+ var app=new Vue({
+     el:'.myapp',
+     data:{
+         name:'mastermin'
+     }
+
+ });
+*/
+  /*  var app1=new Vue({
+        el:".myapp",
+        data:{
+       Lists:[
+           {name:'张三',job:'前端工程师'},
+           {name:'李四',job:'PHP工程师'},
+           {name:'王二',job:'销售经理'},
+           {name:'麻子',job:'测试工程师'}
+       ]
+
+        },
+        computed:{
+            now:function () {
+                return Date.now().toLocaleString()
+            }
+        },
+        methods:{
+            now:function () {
+                return new Date().toLocaleString()
+            }
+        }
+    });
+*/
+
+
+  //v-bind来绑定class和style  v-on来提供事件触发
+/*var app2=new Vue({
+    el:".myapp",
+    data:{
+      istrue:true,
+      isfalse:false
+    },
+    methods:{
+        changeCls:function () {
+        this.istrue=!this.istrue;
+        this.isfalse=!this.isfalse;
+        }
+    }
+
+})*/
+
+/*var app3=new Vue({
+    el:'.myapp',
+    data:{
+        divStyle:{
+            width:'200px',
+            height:'100px',
+            backgroundColor:'red',
+            color:'#fff',
+            lineHeight:'100px',
+            textAlight:'center'
+        }
+    }
+})*/
+//---------------------------------------------
+    //局部注册组件
+/*
+    var comp={
+        template:'<h2>局部注册组件</h2>'
+    };
+
+var app4=new Vue({
+    el:'.myapp',
+    components:{
+        'h1-comp':comp
+    }
+
+})*/
+
+
+
+    //组件之间通信
+
+//1:父组件调用子组件
+/*Vue.component('button-counter',{
+   template:'<button v-on:click="increCounter">{{counter}}</button>',
+    data:function () {
+      return {
+          counter:0
+      }
+    },
+    methods:{
+       increCounter:function () {
+           this.counter++;
+           this.$emit('incretotal')
+       }
+    }
+});
+
+var app5=new Vue({
+    el:'.myapp',
+    data:{
+        total:0
+
+    },
+    methods:{
+        increTotals:function () {
+            console.log(111)
+            this.total+=1
+        }
+    }
+
+})*/
+
+
+
+
+//2:子组件调用父组件
+/*
+Vue.component('event-test',{
+    template:"<p >{{number}}</p>",
+   data:function () {
+       return {
+           number:0
+       }
+   },
+methods:{
+       add:function () {
+           this.number++
+       }
+}
+
+});
+ var app6=new Vue({
+    el:'.myapp',
+     methods:{
+        tounchadd:function () {
+this.$refs.ppp.add()
+        }
+     }
+})
+*/
+
+
+
+//使用slot插槽来替代模板标签中的内容,slot可以具名
+
+/*
+
+var child={
+    template:'<div><h1>我是子组件</h1><slot></slot></div>'
+
+};
+var app6=new Vue({
+    el:'.myapp',
+    components:{
+        'cmps':child
+    }
+})
+*/
+
+
+</script>
+</body>
+</html>

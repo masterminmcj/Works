@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width">
+    <link rel="icon" href="/public/img/标签栏(20)logo.jpg" type="image/x-icon">
+    <title>首页</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/public/css/nav.css">
+    <link rel="stylesheet" href="/public/css/index.css">
+    <link rel="stylesheet" href="/public/css/bottom_bq.css" >
+    <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+
+</head>
+<body>
+<div class="containers">
+<!--导航栏-->
+<div class="nav">
+    <div class="logo">
+    <img src="/public/img/bg3.jpg">
+    </div>
+    <ul>
+
+        <li class="nav_item"><a href="/">&nbsp;&nbsp;首页&nbsp;&nbsp;</a><div class="l_t"><span class="glyphicon glyphicon-user"></span>Home</div></li>
+{% if categories %}
+        <li class="nav_item" ><a href="/goodBlog/good_blog">{{categories[0].categoryName}}</a><div class="l_t"><span class="glyphicon glyphicon-pencil"></span>{{categories[0].categoryName}}</div></li>
+        <li class="nav_item"><a href="/styleRecode/study_recode">{{categories[1].categoryName}}</a><div class="l_t"><span class="glyphicon glyphicon-book"></span>{{categories[1].categoryName}}</div></li>
+        <li class="nav_item"><a href="/comment/comment">{{categories[2].categoryName}}</a><div class="l_t"><span class="glyphicon glyphicon-star"></span>{{categories[2].categoryName}}</div></li>
+{% endif %}
+
+        {% if userInfo.id&&!userInfo.isAdmin %}
+        <!--//如果已经登录并且不是管理员-->
+        <li class="nav_item" id="logined_mess">欢迎你,{{userInfo.username}}</li>
+        <li class="nav_item" id="loginout"><a href="">&nbsp;&nbsp;退出&nbsp;&nbsp;</a><div class="l_t"><span class="glyphicon glyphicon-log-out"></span>Logout</div></li>
+        {% else %}
+        <li class="nav_item"><a href="/login/login.html">&nbsp;&nbsp;登录&nbsp;&nbsp;</a><div class="l_t"><span class="glyphicon glyphicon-log-in"></span>Login</div></li>
+        {% endif %}
+
+    </ul>
+</div>
+
+<!--头部图片-->
+<diV class="top_nav_imgs">
+    <img src="/public/img/bg4.jpg" alt="图片未能正确显示">
+</diV>
+
+<!--位置信息-->
+<div class="nav_position">当前位置-><a href="">首页</a>
+    <input type="text" class="nav_search" maxlength="15" placeholder="搜索相关博文">
+<span class="glyphicon glyphicon-search"></span>
+<span class="pos">芜湖</span>
+<img src="/public/img/tq.jpg">
+<span>晴 30~34 C</span>
+</div>
+
+
+
+<!--主内容区-->
+<div class="main_content">
+
+    <!--主体的左侧-->
+
+<div class="main_content_left">
+
+    <div class="content_title">
+        <span class="glyphicon glyphicon-heart"></span>
+        <span>博文一览</span>
+    <canvas id="cans"></canvas>
+        <span class="study_line">学习动脉线</span>
+    </div>
+
+   <!--博文部分 -->
+    {% if Blog %}
+   <div class="article_item">
+       <h2>{{Blog[0].title}}</h2>
+<article>
+    <div class="article_img"><img src="/public/img/timg.jpg" alt="canvas"></div>
+<div class="article_content">
+
+{{Blog[0].mainContent}}
+<a class="more">阅读全文>></a>
+</div>
+</article>
+       <div class="time_tp">
+           <span class="glyphicon glyphicon-time"></span>
+<span class="date_time">{{Blog[0].timeStamp}}</span>
+           <span class="author">作者:{{Blog[0].author}}</span>
+           <span class="article_form">来源:<a href="good_blog.html">[博文精选]</a></span>
+       </div>
+   </div>
+
+
+    <div class="article_item">
+        <h2>{{Blog[1].title}}</h2>
+        <article>
+            <div class="article_img"><img src="/public/img/angular.jpg" alt="angular"></div>
+            <div class="article_content">
+                {{Blog[1].mainContent}}
+                <a class="more">阅读全文>></a>
+            </div>
+        </article>
+        <div class="time_tp">
+            <span class="glyphicon glyphicon-time"></span>
+            <span class="date_time">{{Blog[1].timeStamp}}</span>
+            <span class="author">作者:{{Blog[1].author}}</span>
+            <span class="article_form">来源:<a href="good_blog.html">[博文精选]</a></span>
+        </div>
+
+    </div>
+
+
+
+
+    <div class="article_item">
+        <h2>{{Blog[2].title}}</h2>
+        <article>
+            <div class="article_img"><img src="/public/img/node.jpg" alt="node.js"></div>
+            <div class="article_content">
+                {{Blog[2].mainContent}}
+                <a class="more">阅读全文>></a>
+            </div>
+        </article>
+        <div class="time_tp">
+            <span class="glyphicon glyphicon-time"></span>
+            <span class="date_time">{{Blog[2].timeStamp}}</span>
+            <span class="author">作者:{{Blog[2].author}}</span>
+            <span class="article_form">来源:<a href="good_blog.html">[博文精选]</a></span>
+        </div>
+
+    </div>
+
+   </div>
+
+{% endif %}
+
+
+
+<!--主体的右侧-->
+<div class="main_content_right">
+
+    <div class="content_title_r">
+        <span>娱乐板块</span>
+        <span class="glyphicon glyphicon-film"></span>
+    </div>
+
+    <div class="entirment">
+        <div class="r_nav">
+            <h2>传送门</h2>
+            <ul>
+                <li><a href="">首页</a></li>
+                <li><a href="good_blog.html">博文精选</a></li>
+                <li><a href="study_recode.html">学习记录</a></li>
+                <li><a href="study_recode.html">留言板</a></li>
+
+            </ul>
+        </div>
+
+        <div class="news">
+            <h2>新闻</h2>
+            <ul>
+                <li><a href="">html5-下一代html标准</a></li>
+                <li><a href="">技术井喷的时代,前端工作者如何与时俱进?</a></li>
+                <li><a href="">你真的了解javascript吗?</a></li>
+                <li><a href="">了不起的css3</a></li>
+                <li><a href="">nodejs为什么成为神器?</a></li>
+            </ul>
+
+        </div>
+
+        <div class="study_recode">
+            <h2>拦路之石</h2>
+            <ul>
+                <li><a href="">如何构建一个漂亮的表格</a></li>
+                <li><a href="">利用nodejs读取mysql</a></li>
+                <li><a href="">利用canvas制作特效倒计时</a></li>
+                <li><a href="">关于css中margin-top问题</a></li>
+                <li><a href="">bug or 失误?</a></li>
+                <li><a href="">繁多的知识点,怎样高效记忆</a></li>
+            </ul>
+
+        </div>
+
+    </div>
+
+</div>
+</div>
+
+    <!--版权信息-->
+
+<div class="copyright">
+    <span>Copyright&copy; 2017 mastermin  All rights reserved</span>
+<span>友情链接>>></span>
+    <ul>
+        <li><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide">js指南</a>/</li>
+        <li><a href="http://www.liaoxuefeng.com/wiki/001434446689867b27157e896e74d51a89c25cc8b43bdb3000">廖雪峰js教程</a>/</li>
+        <li><a href="http://www.runoob.com/angularjs">angular教程</a>/</li>
+        <li><a href="http://www.w3school.com.cn/css/">css基础知识</a></li>
+    </ul>
+</div>
+
+
+</div>
+<script type="application/javascript" src="/public/js/index.js"></script>
+</body>
+</html>

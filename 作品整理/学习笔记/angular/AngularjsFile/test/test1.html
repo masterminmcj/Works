@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="application/javascript" src="../JSfile/angular.min.js"></script>
+</head>
+<style type="text/css">
+    input[type="text"]{
+        width: 200px;
+        height: 35px;
+        font-size: 18px;
+    }
+    input:focus{
+        outline: none;
+    }
+    .equ,.add{
+        font-size: 18px;
+        width:75px;
+        height: 40px;
+        line-height: 35px;
+    }
+    .result{
+        margin-left: 20px;
+
+    }
+</style>
+<body>
+<div ng-app="myapp" ng-controller="mycontroller">
+ <input type="text" ng-model="opt1">
+    <button class="add">+</button>
+<input type="text" ng-model="opt2">
+    <button class="equ" ng-click="adds()">=</button>
+<span ng-model="result" class="result">{{opt1*1+opt2*1}}</span>
+</div>
+<script type="application/javascript">
+    var equ=document.getElementsByClassName("equ");
+    var app=angular.module("myapp",[]);
+    app.controller("mycontroller",function($scope){
+        
+//$scope.result=$scope.opt1*1+$scope.opt2*1;
+    })
+
+</script>
+</body>
+</html>

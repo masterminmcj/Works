@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>浮动问题</title>
+</head>
+<style>
+    .box{
+        width: 400px;
+    }
+    .div1{
+        width: 100px;
+        float: left;
+        background-color: red;
+    }
+    .div2{
+        width: 100px;
+        float: right;
+        background-color: #1dff28;
+    }
+    h3{
+        height: 40px;
+        /*--IE6   float: left;*/
+    }
+
+
+
+</style>
+
+<!--
+在标准浏览器中显示没有问题，div1,div2因为浮动的原因高度被子元素
+撑开，而在IE6中没有此效果
+解决方法：在子元素h3上也添加浮动
+
+-->
+
+<body>
+<div class="box">
+<div class="div1">
+    <h3>div1</h3>
+</div>
+
+<div class="div2">
+    <h3>div2</h3>
+</div>
+</div>
+</body>
+</html>

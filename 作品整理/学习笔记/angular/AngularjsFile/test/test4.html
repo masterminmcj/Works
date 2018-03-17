@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>server</title>
+    <script type="application/javascript" src="../JSfile/angular.min.js"></script>
+</head>
+<body>
+<div ng-app="myapp" ng-controller="contrl">
+    <div>{{location}}</div>
+
+</div>
+<script type="application/javascript">
+    angular.module("myapp",[])
+        .controller("contrl",function($scope,$location){
+$scope.location=$location.absUrl()
+        })
+
+
+</script>
+</body>
+</html>

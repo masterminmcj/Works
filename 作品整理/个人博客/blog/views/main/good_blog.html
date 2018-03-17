@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="/public/img/标签栏(20)logo.jpg" type="image/x-icon">
+    <title>博文精选</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="/public/css/nav.css" rel="stylesheet">
+    <link href="/public/css/good_blog.css" rel="stylesheet">
+    <link href="/public/css/bottom_bq.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+
+
+</head>
+<body>
+<div class="containers">
+<!--公共导航部分-->
+    <div class="nav">
+        <div class="logo">
+            <img src="/public/img/bg3.jpg">
+        </div>
+        <ul>
+
+            <li class="nav_item"><a href="/">&nbsp;&nbsp;首页&nbsp;&nbsp;</a><div class="l_t"><span class="glyphicon glyphicon-user"></span>Home</div></li>
+            {% if categories %}
+            <li class="nav_item" ><a href="/goodBlog/good_blog.html">{{categories[0].categoryName}}</a><div class="l_t"><span class="glyphicon glyphicon-pencil"></span>{{categories[0].categoryName}}</div></li>
+            <li class="nav_item"><a href="/styleRecode/study_recode.html">{{categories[1].categoryName}}</a><div class="l_t"><span class="glyphicon glyphicon-book"></span>{{categories[1].categoryName}}</div></li>
+            <li class="nav_item"><a href="/comment/comment.html">{{categories[2].categoryName}}</a><div class="l_t"><span class="glyphicon glyphicon-star"></span>{{categories[2].categoryName}}</div></li>
+
+            {% endif %}
+
+            {% if userInfo.id&&!userInfo.isAdmin %}
+            <!--//如果已经登录并且不是管理员-->
+            <li class="nav_item" id="logined_mess">欢迎你,{{userInfo.username}}</li>
+            <li class="nav_item" id="loginout"><a href="">&nbsp;&nbsp;退出&nbsp;&nbsp;</a><div class="l_t"><span class="glyphicon glyphicon-log-out"></span>Logout</div></li>
+            {% else %}
+            <li class="nav_item"><a href="/login/login.html">&nbsp;&nbsp;登录&nbsp;&nbsp;</a><div class="l_t"><span class="glyphicon glyphicon-log-in"></span>Login</div></li>
+            {% endif %}
+
+        </ul>
+    </div>
+
+
+    <div class="blog_title">
+        <img src="/public/img/center.jpg"><span>博文一览</span>
+        <img src="/public/img/center1.jpg">
+    </div>
+
+<!--博文列表-->
+<div class="blogList">
+
+    <div class="blogItem">
+        <h2 class="blogTitle">asdsa</h2>
+        <div class="blogContent">ahdhasdhvajcvjvjvcj</div>
+
+        <div class="blogFooter">
+        <span class="timeStamp">2017-10-3</span>
+        <span class="author">按多少都会</span>
+        </div>
+
+    </div>
+
+
+</div>
+
+
+</div>
+
+<script type="application/javascript" src="/public/js/good_blog.js"></script>
+</body>
+</html>

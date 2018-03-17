@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jquery部分</title>
+</head>
+<script src="https://code.jquery.com/jquery-2.2.4.js"></script>
+<body>
+<h1>包含内容:<span style="color: red">三层选择器</span></h1>
+
+
+<h2>1:三层选择器</h2>
+<!--简单选择器 组合选择器 选择器组-->
+<!--简单选择器通常是由一个标签起头 $('p') $('p.div1') $('#container') $('input:text').......-->
+<!--组合选择器 是由简单选择器组合而成 A>B A B A+B A~B-->
+<!--选择器组  类似于css选择器中的并选择器  $('p.div1,p.div2,p.div3')-->
+
+
+<h2>选取方法</h2>
+<!--与选择器不同的是选择出的东西是一个而不是以一个组的形式通常作为一个新的选择器起点使用-->
+
+<!--1: last()  first()-->
+<!--$('p').last() $('p').first()-->
+<!--2: slice()-->
+<!--$('p').slice(1,2) 这个方法类似于数组的slice方法-->
+<!--3:eq()-->
+<!--$('p').eq(1)-->
+<!--4:find() 选中已经选择的元素中寻找指定的子元素-->
+<!--$('div').find('p.p1')-->
+<!--5:next() prev nextAll() prevAll()->
+<!--6:children() contents()-->
+<!--................-->
+</body>
+</html>

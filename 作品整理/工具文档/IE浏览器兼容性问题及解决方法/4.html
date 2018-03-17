@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>标签的嵌套规则</title>
+</head>
+<!--
+在所有浏览器中都要注意标签的嵌套规则，如不能在内联元素里面嵌套块级元素
+不能在p标签中嵌套div等等
+否则会出现意外的效果，本例中浏览器解析时遇到第一个<p>会认为忘记添加闭合会自动添加闭合标签
+    遇到</p>时会自动在前面补上一个<p>，最后导致出现多个p标签
+    -->
+
+<style>
+    P{
+        width: 200px;
+        height: 100px;
+        background-color: #1dff28;
+    }
+</style>
+<body>
+<p>
+    <div></div>
+
+</p>
+</body>
+</html>

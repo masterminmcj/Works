@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myapp">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/angular.min.js"></script>
+</head>
+<style>
+    .colorCondition{
+        width: 200px;
+        height: 150px;
+        border: 1px solid;
+    }
+</style>
+<body ng-controller="Ctr as ctr1">
+<h2>调色板</h2>
+<div class="colorCondition" ng-style="ctr1.getColor()"></div>
+<div class="widget">
+    <p class="widget-item">
+        R:<input type="range" min="0" max="255" ng-model="ctr1.r">
+        <input type="number" ng-model="ctr1.r">
+    </p>
+    <p class="widget-item">
+        G:<input type="range" min="0" max="255" ng-model="ctr1.g" >
+        <input type="number" ng-model="ctr1.g" >
+    </p>
+    <p class="widget-item">
+    B:<input type="range" min="0" max="255" ng-model="ctr1.b" >
+    <input type="number" ng-model="ctr1.b" >
+</p>
+</div>
+<script type="text/javascript">
+    angular.module('myapp',[])
+        .controller('Ctr',function($scope){
+        this.r=255;
+        this.b=0;
+        this.g=0;
+        this.getColor=function (){
+            return {'background-color':'rgb('+this.r+','+this.g+','+this.b+')'}
+        }
+        })
+</script>
+</body>
+</html>

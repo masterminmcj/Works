@@ -1,0 +1,21 @@
+{% extends './nav-public.html' %}
+{% block title%}后台管理首页{% endblock%}
+
+
+{% block content %}
+<div class="content">
+    <h1>hello {{userInfo.username}}</h1>
+    <p class="desc">
+        欢迎你,管理员,在这里您可以管理修改用户的相关信息与权限
+        <p>1：查看用户资料信息</p>
+        <p>2：查看用户评论，合并删除评论</p>
+        <p>3：修改用户非隐私资料</p>
+        <p>4：发布,修改新信息</p>
+    </p>
+</div>
+{% endblock %}
+
+
+{% block admin %}
+{{userInfo.username}}
+{% endblock %}

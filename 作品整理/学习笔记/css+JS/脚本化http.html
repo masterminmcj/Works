@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>脚本化http</title>
+</head>
+<style>
+    .acept_mess{
+        font-size: 20px;
+        color: green;
+    }
+.pressBar{
+    width: 500px;
+    border-radius: 5px;
+    height: 20px;
+    border: 1px solid #aaa;
+    margin: 20px 0;
+
+}
+    .progress_number{
+        position: absolute;
+        left: 520px;
+        top:345px;
+        color: red;
+    }
+</style>
+<body>
+<h2>Ajax</h2>
+<button class="btn">点击进行ajax</button>
+<div class="div1">
+
+
+</div>
+
+<h2>文件的上传</h2>
+
+选择文件:<input type="file" class="files">
+<p></p>
+<button class="btn1">点击上传</button>
+
+
+
+<h2>XHR2</h2>
+
+<button class="btn2">Click To Tigger XHR</button>
+
+<div class="pressBar">
+    <div class="progress_item" style="width:0;height: 100%;background-color: green"></div>
+</div>
+
+<div>
+    Message from XHR:<span class="acept_mess"></span>
+</div>
+<span class="progress_number"></span>
+<script>
+/*
+    //Ajax
+//最简单原生的AJAX利用XMLHttpRequest对象
+    var div1 = document.getElementsByClassName('div1')[0];
+    var btn = document.getElementsByClassName('btn')[0];
+    btn.onclick=function () {
+        var xml = new XMLHttpRequest();
+        xml.onreadystatechange = function () {
+            if (xml.readyState ===4 && xml.status===200) {
+                //通过AJAX传递文字信息
+                //div1.innerHTML = xml.responseText
+
+                var img=document.createElement('img');
+                img.src=xml.responseURL;//获取通过ajax传递过来的图片路径
+                div1.appendChild(img)
+            }
+        };
+        //第三个参数设为true为异步请求,false为同步请求
+        xml.open('GET','./选区_018.png',true);
+        xml.send()//不可省略
+    }
+*/
+//------------------------------------------------------------------------
+//利用XHR进行文件的上传
+//以下的代码涉及到跨域的问题
+
+/*
+var f="";
+    var file=document.getElementsByClassName('files')[0];
+    var btn1=document.getElementsByClassName('btn1')[0];
+file.addEventListener('change',function () {
+f=this.files[0];
+});
+
+    btn1.addEventListener('click',function () {
+        if(f) {
+            var XHR = new XMLHttpRequest();
+            XHR.open('POST', './test.txt');
+            XHR.send(f);
+
+            XHR.onreadystatechange = function () {
+                if (XHR.readyState === 4 && XHR.status === 200) {
+                    console.log('请求成功');
+                    console.log('请求的内容为:' + XHR.responseText)
+                }
+            }
+        }
+        else {
+            alert("请选择要上传的文件")
+        }
+})
+*/
+
+    
+//----------------------------------------------------------
+//XHR2  使用loadstart progress load等事件来监听XHR的传输状态
+
+    var aceptMess=document.getElementsByClassName('acept_mess')[0];
+    var btn2=document.getElementsByClassName('btn2')[0];
+    var progress_item=document.getElementsByClassName('progress_item')[0];
+    var pressBar=document.getElementsByClassName('pressBar')[0];
+    var Sy=getComputedStyle(pressBar,null);
+var progressNumber=document.getElementsByClassName('progress_number')[0];
+
+    btn2.onclick=function () {
+
+        var Xhr = new XMLHttpRequest();
+
+        Xhr.open('GET', './test.txt');
+        Xhr.send();
+        //Xhr.abort();  用于取消XHR
+        Xhr.addEventListener('loadstart', function () {
+            console.log('XHR start Send')
+        });
+        Xhr.addEventListener('progress', function (e) {
+            var loaded=e.loaded;
+            var total=e.total;
+           var rate=Math.round(loaded/total);
+
+           var wid=rate*parseInt(Sy.width);
+            progress_item.style.width=wid+'px';
+            progressNumber.innerHTML=(rate*100)+'%'
+        });
+        Xhr.addEventListener("load", function () {
+            if (Xhr.status === 200) {
+                aceptMess.innerHTML = Xhr.responseText
+            }
+            else {
+                console.log('SHR ERROR!')
+            }
+        })
+    }
+</script>
+
+</body>
+</html>

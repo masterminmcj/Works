@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>template中v-if,v-else</title>
+</head>
+<body>
+<div id="app">
+<h1>template中v-if,v-else</h1>
+    <div>
+        <template v-if="isnum">
+            <label>用户名:</label>
+            <input type="text" placeholder="请输入手机号">
+        </template>
+
+        <template v-else>
+            <label>用户名:</label>
+            <input type="email" placeholder="请输入邮箱">
+
+        </template>
+<input type="button" value="点击切换登录方式" v-on:click="clickToggle">
+
+    </div>
+
+</div>
+<script type="application/javascript" src="./js/vue.js"></script>
+<script type="application/javascript">
+    new Vue({
+        el:"#app",
+        data:{
+            isnum:true
+        },
+        methods:{
+            clickToggle:function(){
+                this.isnum=!this.isnum;
+            }
+            /*computed:{
+                clickToggle:function(){
+                    this.isnum=!this.isnum;
+                }
+             *///不能实现功能,因为computed具有缓存
+        }
+    })
+
+
+</script>
+</body>
+</html>

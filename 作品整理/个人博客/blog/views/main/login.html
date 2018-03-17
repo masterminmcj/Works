@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="/public/img/标签栏(20)logo.jpg" type="image/x-icon">
+    <title>mastermin</title>
+    <link href="/public/css/login.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+</head>
+<body>
+<div class="container" >
+<!--登录界面-->
+    <div class="login">
+        <form class="login_form" action="" method="post">
+            <div class="username_container">
+                <span class="glyphicon glyphicon-user"></span>
+            <input type="text" name="username" maxlength="12" placeholder='请输入用户名'>
+                <span class="username_notic">5-11字母开头的字母或数字</span>
+             <span class="glyphicon glyphicon-ok"></span>
+            </div>
+
+            <div class="psd_container">
+            <span class="glyphicon glyphicon-edit"></span>
+            <input type="password" name="password" maxlength="12" placeholder="请输入密码">
+                <span class="psd_notic">数字或字母5-12位</span>
+                <span class="glyphicon glyphicon-ok"></span>
+            </div>
+
+<div class="err_mess">
+                <span >***用户名或密码错误***</span>
+</div>
+            <div class="login_to_rigister">
+                <span>没有账户?<a class="to-register">点击注册</a></span>
+            </div>
+            <div class="submit_container">
+            <input type="submit" value="登录">
+            <input type="checkbox" name="remberPassword" id="rember_psd">
+                <label for="rember_psd">记住密码</label>
+            </div>
+
+        </form>
+
+    </div>
+
+<!--注册界面-->
+<div class="register">
+
+<form class="registerForm">
+    <label id="registerUsername">用户名:
+        <input type="text" name="registerUsername" maxlength="11" placeholder="字母开头5-12位数字或字母">
+        <span class="glyphicon glyphicon-ok"></span>
+    </label>
+
+<label id="userPhoneNumber">手机号码:
+<input type="text" name="phoneNumber" maxlength="11" placeholder="请输入手机号码">
+<span class="glyphicon glyphicon-ok"></span>
+</label>
+
+<label id="registerPassword">密&nbsp;&nbsp;&nbsp;&nbsp;码:
+<input type="password" name="registerPassword" maxlength="12" placeholder="5-12位数字或字母">
+    <span class="glyphicon glyphicon-ok"></span>
+    </label>
+<label id="ensurePassword">再次确认密码:
+<input type="password" name="ensurePassword" maxlength="12" placeholder="5-12位数字或字母">
+    <span class="glyphicon glyphicon-ok"></span>
+    <span class="glyphicon glyphicon-remove"></span>
+</label>
+    <!--注册失败错误信息-->
+    <p class="registerexit">***注册账号已经存在!***</p>
+<input type="submit" value="点击注册" disabled="disabled">
+</form>
+
+
+</div>
+
+<!--注册成功页面-->
+<div class="registerSuccess">
+    <p class="registerSuccessContent">注册成功</p>
+    <p class="successLogo"><span class="glyphicon glyphicon-ok-circle"></span></p>
+    <p>赶快点击此处去<a class="toLogin">登录</a>吧</p>
+</div>
+
+
+</div>
+
+<script type="application/javascript" src="/public/js/login.js"></script>
+</body>
+</html>

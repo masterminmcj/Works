@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ng-repeat</title>
+    <script type="application/javascript" src="../JSfile/angular.min.js"></script>
+</head>
+<body>
+<div ng-app="app">
+    <ul ng-controller="contrl">
+        <li ng-repeat="x in names">{{x}}{{" "}}{{job}}{{" "}}{{sex}}</li>
+    </ul>
+<p>{{job}}{{sex}}</p>
+
+
+</div>
+
+<script type="application/javascript">
+    angular.module("app",[])
+        .controller("contrl",function($scope,$rootScope){
+            $scope.names=["curry","green","kely","durant"];
+            $rootScope.job="student";//可以看出不在控制器范围内的通过$rootScope获得了值
+            $scope.sex="male"
+        })
+
+</script>
+</body>
+</html>

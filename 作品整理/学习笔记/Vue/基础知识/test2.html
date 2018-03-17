@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>组件的探究</title>
+</head>
+<body>
+<div class="myapp">
+ <!--   <ul>
+
+    <my-component></my-component>
+    <my-component></my-component>
+    <my-component></my-component>
+    <my-component></my-component>
+    </ul>-->
+    <!--可以传入数据-->
+    <says message="hello"></says>
+
+
+</div>
+
+<script type="application/javascript" src="../js/vue.js"></script>
+<script type="application/javascript">
+    /*Vue.component("my-component",{
+    //定义一般的组件
+        template: "<h3>hello wrold</h3>"
+    });
+*/
+Vue.component("says",{
+    //定义可以传入数据的组件
+    props:['message'],
+    template:"<h2>{{message}}</h2>"
+
+});
+    new Vue({
+    el:".myapp"
+});
+
+
+
+
+</script>
+</body>
+</html>

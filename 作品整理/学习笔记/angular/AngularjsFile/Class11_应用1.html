@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>个人说说</title>
+    <script type="application/javascript" src="JSfile/angular.min.js"></script>
+</head>
+<style type="text/css">
+    .mian_area{padding:10px 30px;border: 2px #999 dotted;
+  width:300px;margin:30px 500px;background-color: #EEE}
+*{margin: 0;padding: 0}
+    h2{font-size: 20px;color:skyblue;text-align: center;padding-bottom: 10px}
+    textarea{background-color:#FAF3B3;border:1px solid darksalmon;font-size: 14px}
+.radio_class button{width: 50px;height: 30px;background-color:skyblue;
+    color: white;margin: 2px 20px}
+    .rest_alert{font-size: 16px;color:green }
+    </style>
+<body ng-app="mynote" ng-controller="ctl">
+<div class="mian_area">
+    <h2>个人说说</h2>
+
+    <textarea ng-model="data" cols="40" rows="20"></textarea>
+<p class="rest_alert">{{"剩余的字数为:"+rest}}</p>
+
+
+   <div class="radio_class">
+       <button ng-click="display()" class="display">发表</button>
+       <button ng-click="save()" class="save">保存</button>
+       <button ng-click="reset()" class="reset">取消</button>
+   </div>
+
+</div>
+
+<script>
+    var app=angular.module("mynote",[]);
+    app.controller("ctl",function($scope){
+        $scope.data="";
+        $scope.$watch("data",function(){
+           $scope.rest=400-$scope.data.length
+        });
+
+        $scope.display=function(){alert("发表成功")};
+        $scope.save=function(){alert("保存成功")};
+        $scope.reset=function(){$scope.data=""}
+    })
+
+</script>
+</body>
+</html>

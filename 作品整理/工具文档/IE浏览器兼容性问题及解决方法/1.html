@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+.box{
+width:400px
+}
+.box-left{
+    width: 200px;
+    height: 200px;
+    background-color: red;
+    float: left;
+}
+    .box-right{
+        width: 200px;
+        float: right;
+    }
+    .div{
+        width: 180px;
+        height: 100px;
+        background-color: yellow;
+        padding: 20px;
+    }
+</style>
+<body>
+
+<!--
+在标准浏览器在子级的宽度不会超过父级高度，而在IE中会造成换行，
+所以在计算宽高时要准确
+-->
+
+
+<div class="box">
+    <div class="box-left"></div>
+    <div class="box-right">
+        <div class="div"></div>
+    </div>
+
+</div>
+
+</body>
+</html>

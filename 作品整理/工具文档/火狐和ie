@@ -1,0 +1,26 @@
+1、IE6.0的div的内嵌div可以把父级的高度撑大，而FireFox不可以，要自己设置高度。
+2、当设置为三列布局时，IE6.0的float宽度不能达到100％，而FireFox可以。当设置为两列布局时，两种浏览器都可以。
+3、在FireFox中，非float的div前面有同一父级的float的div，此div若有背景图，要使用clear：both，才能显示背景图，而IE6.0中不用使用clear：both。
+4、在[text-decoration:underline]的属性下，IE6.0显示的下划线会比FireFox低一点。在FireFox中，部分笔画会在下划线的下面1个象素左右。 
+IE vs FF
+CSS 兼容要点：
+DOCTYPE 影响 CSS 处理
+FF: div 设置 margin-left, margin-right 为 auto 时已经居中, IE 不行
+FF: body 设置 text-align 时, div 需要设置 margin: auto(主要是 margin-left,margin-right) 方可居中
+FF: 设置 padding 后, div 会增加 height 和 width, 但 IE 不会, 故需要用 !important 多设一个 height 和 width
+FF: 支持 !important, IE 则忽略, 可用 !important 为 FF 特别设置样式
+div 的垂直居中问题: vertical-align:middle; 将行距增加到和整个DIV一样高 line-height:200px; 然后插入文字，就垂直居中了。缺点是要控制内容不要换行
+cursor: pointer 可以同时在 IE FF 中显示游标手指状， hand 仅 IE 可以
+FF: 链接加边框和背景色，需设置 display: block, 同时设置 float: left 保证不换行。参照 menubar, 给 a 和 menubar 设置高度是为了避免底边显示错位, 若不设 height, 可以在 menubar 中插入一个空格
+XHTML+CSS兼容性解决方案小集
+使用XHTML＋CSS构架好处不少，但也确实存在一些问题，不论是因为使用不熟练还是思路不清晰，我就先把一些我遇到的问题写在下面，省的大家四处找^^
+1.在mozilla firefox和IE中的BOX模型解释不一致导致相差2px解决方法：
+div{margin:30px!important;margin:28px;}注意这两个margin的顺序一定不能写反，据阿捷的说法!important这个属性IE不能识别，但别的浏览器可以识别。所以在IE下其实解释成这样：
+div{maring:30px;margin:28px}重复定义的话按照最后一个来执行，所以不可以只写margin:XXpx!important;
+2.IE5 和IE6的BOX解释不一致IE5下div{width:300px;margin:0 10px 0 10px;}div的宽度会被解释为300px-10px(右填充)-10px(左填充)最终div的宽度为280px，而在IE6和其他浏览器上宽度则 是以300px+10px(右填充)+10px(左填充)=320px来计算的。这时我们可以做如下修改
+div{width:300px!important;width   /**/:340px;margin:0   10px   0   10px}，关于这个/**/是什么我也不太明白，只知道IE5和firefox都支持但IE6不支持，如果有人理解的话，请告诉我一声，谢了！：）
+3.ul标签在Mozilla中默认是有padding值的,而在IE中只有margin有值所以先定义
+ul{margin:0;padding:0;}就能解决大部分问题
+4.关于脚本，在xhtml1.1中不支持language属性，只需要把代码改为
+<script   type="text/javascript">就可以了
+

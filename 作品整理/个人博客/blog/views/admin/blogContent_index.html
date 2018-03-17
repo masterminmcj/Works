@@ -1,0 +1,66 @@
+{% extends './nav-public.html'%}
+
+{% block title %}用户管理{% endblock %}
+
+{% block admin %}
+{{userInfo.username}}
+{% endblock %}
+{% block cssLink %}
+<link href="/public/css/userManage.css" rel="stylesheet">
+<link href="/public/css/pagegation.css" rel="stylesheet">
+
+{% endblock %}
+
+{% block content%}
+<div class="nowposition">
+    <ol class="breadcrumb">
+        当前位置：
+        <li><a href="/admin/user">首页</a></li>
+        <li class="active">博文管理</li>
+    </ol>
+</div>
+
+<!--显示分类列表-->
+<div class="userList table-responsive">
+    <h3>分类列表：</h3>
+    <table class="table table-bordered">
+        <tr class="th">
+            <th>ID</th>
+            <th>博文标题</th>
+            <th>操作</th>
+        </tr>
+        {% for x in ContentTitleList %}
+
+        <tr>
+            <td>{{x.id}}</td>
+            <td>{{x.title}}</td>
+            <td>
+                <a href="/admin/Content/edit?id={{x.id}}">修改</a>
+                <span>/</span>
+                <a href="/admin/Content/delete?id={{x.id}}">删除</a>
+
+            </td>
+
+        </tr>
+
+        {% endfor %}
+    </table>
+</div>
+<!--显示分页-->
+<div class="page">
+    <ul>
+        <li><a href="/admin/blogContent_index?page={{nowpage-1}}">&lt;上一页</a></li>
+        <li><a href="/admin/blogContent_index?page={{nowpage+1}}">下一页&gt;</a></li>
+    </ul>
+    <div class="pageShow">
+        <span class="totalPages">共<span>{{pages}}</span>页</span>
+        <span class="activepage">当前页:<span>{{nowpage}}</span>/{{pages}}</span>
+        <label>
+            跳转到:<input type="text" value="{{nowpage}}">页
+        </label>
+        <button class="btn" id="btn">确定</button>
+    </div>
+</div>
+<script src="/public/js/category.js" type="text/javascript"></script>
+
+{% endblock %}

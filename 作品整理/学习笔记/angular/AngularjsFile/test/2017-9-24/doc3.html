@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../../JSfile/angular.min.js"></script>
+    <script src="http://apps.bdimg.com/libs/angular.js/1.5.0-beta.0/angular-sanitize.min.js"></script>
+</head>
+<body>
+<div ng-app="test" ng-controller="ctr" ng-init="shows=true">
+
+    <button ng-click="show()">显示或隐藏</button>
+   <div ng-show="shows">
+       <p>显示或隐藏</p>
+   </div>
+
+
+ <input type="text" ng-model="txt2">
+<button ng-click="$log.log(txt2)">点击打印信息</button>
+
+
+
+</div>
+<script>
+    angular.module('test', ['ngSanitize'])
+        .controller('ctr',function($scope,$log){
+            $scope.text='my name is <h1>张三</h1>';
+            $scope.link='http://www.baidu.com';
+            $scope.$log=$log;
+            $scope.show=function (){
+            $scope.shows=!$scope.shows
+            }
+        })
+
+</script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" ng-app="myapp">
+    <title>Title</title>
+    <script src="../../JSfile/angular.min.js"></script>
+    <script src="../../JSfile/angular-route.min.js"></script>
+</head>
+<body>
+<div class='container'>
+
+    <div class="header"></div>
+    <div class="mainContent" ng-view></div>
+    <div class="footer"></div>
+</div>
+
+<script>
+    angular.module('myapp',[])
+        .config(['$routeProvider',function($routeProvider) {
+            $routeProvider
+                .when('./home',{
+                    template:'<h2>HOME</h2>'
+                })
+
+        }])
+
+
+</script>
+</body>
+</html>

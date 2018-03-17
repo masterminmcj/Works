@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ng-option</title>
+    <script type="application/javascript" src="../JSfile/angular.min.js"></script>
+</head>
+<body>
+<div ng-app="app" ng-controller="contrl">
+    <select ng-model="fruit" ng-init="fruit=fruits[0]" ng-options="x for x in fruits"></select>
+
+</div>
+<script type="application/javascript">
+    angular.module("app",[])
+        .controller("contrl",function($scope){
+           $scope.fruits=["apple","balala","pear","strawbery"]
+        })
+
+</script>
+</body>
+</html>

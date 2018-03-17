@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myapp">
+<head>
+    <meta charset="UTF-8">
+    <title>微博发布框</title>
+<script src="../js/angular.min.js"></script>
+</head>
+<style>
+    .weblog textarea{
+        border: 2px solid #333;
+        outline: none;
+        resize: none;
+        font-size: 18px;
+    }
+    .weblog>p{
+        font-size:16px;
+    }
+</style>
+<body>
+<div class="weblog" ng-controller="Ctr as ctr1">
+    <p ng-style="ctr1.InputBlog.length>140?{'color':'red'}:{'color':'black'}">当前输入的字数:{{ctr1.InputBlog.length}}/140</p>
+    <textarea cols="40" rows="10" ng-model="ctr1.InputBlog"></textarea>
+    <p>
+        <input type="button" value="发布" ng-disabled="ctr1.InputBlog.length>140?true:false">
+        <input type="button" value="清空" ng-click="ctr1.BlogClear()" ng-disabled="ctr1.InputBlog.length==0">
+    </p>
+</div>
+
+
+<script>
+
+  angular.module('myapp',[])
+      .controller('Ctr',function(){
+          var self=this;
+         this.InputBlog='';
+this.BlogClear=function (){
+    self.InputBlog=''
+}
+      })
+
+</script>
+</body>
+</html>

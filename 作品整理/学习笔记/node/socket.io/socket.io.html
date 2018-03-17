@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+server.listen(3007);
+<body>
+<h1>websocket的node实现</h1>
+<p class="count">当前在线用户数量为:<span></span></p>
+<div class="div1">wecome</div>
+<script src="/socket.io/socket.io.js"></script>
+<script>
+
+    var div1=document.querySelectorAll('.div1')[0];
+    var count=document.querySelectorAll('.count>span')[0];
+
+    var io=io.connect('http://localhost:3007');
+
+    io.on('message',function(data) {
+        div1.innerHTML='wlecome '+data.text;
+    count.innerHTML=data.count
+    })
+
+
+
+</script>
+
+</body>
+</html>

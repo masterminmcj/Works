@@ -1,0 +1,78 @@
+.page{
+    width: 100%;
+    position:absolute;
+    margin-top: 50px;
+    height: 100px;
+    top:400px;
+}
+.page>ul{
+
+    overflow: hidden;
+    list-style: none;
+    width: 30%;
+    position: absolute;
+    left: 30%;
+}
+.page>div.pageShow{
+
+    width: 70%;
+position: absolute;
+    left:50%;
+}
+.pageShow>span{
+    display: inline-block;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    font-size: 24px;
+    margin-left: 5px;
+}
+.pageShow>label{
+    text-align: center;
+    font-size: 18px;
+    height: 60px;
+    line-height: 60px;
+    margin:0 10px;
+}
+.pageShow>label>input{
+    height: 35px;
+    outline: none;
+    border-radius: 5px;
+    border:1px solid #314aff;
+    width: 75px;
+}
+.pageShow button.btn{
+    width: 75px;
+    height: 40px;
+    background-color: #314aff;
+    color: white;
+    vertical-align:middle;
+    font-size: 18px;
+    outline:none;
+}
+.page>ul>li{
+    float: left;
+    width: 30%;
+    height: 60px;
+    background-color: #4194ff;
+    border-right: 1px solid white;
+}
+
+.page>ul>li:first-child{
+    border-radius: 5px 0 0 5px ;
+}
+
+.page>ul>li:last-child{
+    border-radius: 0 5px 5px 0;
+    border-right: none;
+
+}
+.page>ul>li>a{
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    line-height: 60px;
+    text-decoration: none;
+    display: block;
+}

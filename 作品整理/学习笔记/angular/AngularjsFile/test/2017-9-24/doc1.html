@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>理解angular</title>
+    <script src="../../JSfile/angular.min.js"></script>
+</head>
+
+<body ng-app="p1">
+<div  ng-controller="c1">
+   <p>{{parent}}</p>
+
+    <div ng-controller="c2">
+    <button ng-click="$emit('toparent')">点击进行emit</button>
+    <button ng-click="$broadcast('tochild')">点击进行broadcast</button>
+
+    <div ng-controller="c3">
+    <p>{{child}}</p>
+
+    </div>
+    </div>
+    </div>
+<script>
+
+    /**
+     * 本例分为三层作用域即c1,c2,c3
+     * 在c2层中分别使用$emit,$broadcast发射和广播事件，
+     * c1层为c2层父级，故可以通过$scope.on的监听c2层的emit事件
+     * c3层为此c2层的子级，故可以监听来自c2层的broadcast事件
+     */
+    angular.module('p1',[])
+       .controller('c1',function($scope){
+           $scope.parent=0;
+           $scope.$on('toparent',function(){
+               $scope.parent++
+           });
+
+       })
+       .controller('c2',function($scope){
+           $scope.child=0;
+       })
+       .controller('c3',function ($scope) {
+
+
+           $scope.$on('tochild',function(){
+               $scope.child++
+           });
+
+       })
+
+
+</script>
+
+</body>
+
+</html>

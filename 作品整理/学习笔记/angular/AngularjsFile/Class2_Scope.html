@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="application/javascript" src="JSfile/angular.min.js"></script>
+</head>
+<body>
+<div ng-app="myapp" ng-controller="mycontroller">
+firstName:<input type="text" ng-model="first_name">
+lastName:lastname:<input type="text" ng-model="last_name">
+<input type="button" id="btn" value="点击登录" ng-click="sayname()">
+<h2>{{hello}}</h2>
+</div>
+
+<script type="application/javascript">
+    (function() {
+        var myapp = angular.module("myapp", []);
+        myapp.controller("mycontroller", function ($scope) {
+            $scope.sayname = function () {
+                $scope.myname =$scope.first_name+" "+$scope.last_name;
+
+                $scope.hello = "欢迎你:" + $scope.myname + "!";
+            }
+        });
+    })()
+
+//本页使用了$scope注意其作用域，比如在重复中$scope定义的变量仅在
+// 重复中可以访问，循环外没有权限
+// $rootscope在作用域整个ng-app中
+
+
+</script>
+</body>
+</html>

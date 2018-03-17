@@ -1,0 +1,26 @@
+.nav{
+    height: 60px;
+}
+.nowposition{
+
+    color: #ffd048;
+    font-size: 18px;
+}
+.nowposition>ol{
+    background-color: black;
+}
+.table tr:nth-of-type(2n+1){
+     background-color: #eee;
+ }
+.th{
+    font-size: 18px;
+    color: #fff7b5;
+    background-color: #999 !important;
+}
+.th>th{
+    text-align: center;
+}
+td{
+    font-size: 16px;
+     text-align: center;
+ }

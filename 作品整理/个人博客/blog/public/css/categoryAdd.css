@@ -1,0 +1,34 @@
+
+.nav{
+    height: 60px;
+}
+.nowposition{
+
+    color: #ffd048;
+    font-size: 18px;
+}
+.nowposition>ol{
+    background-color: black;
+}
+
+form[name='categoryAdd']{
+    width: 100%;
+    overflow: hidden;
+}
+#categoryInput{
+     font-size: 18px;
+     color: #995c59;
+    width: 50%;
+ }
+#categoryInput>input{
+    width:70%;
+    height: 45px;
+}
+#Submit>input{
+    width: 75px;
+    height: 45px;
+    background-color: #314aff;
+    border-radius: 5px;
+    font-size: 18px;
+    color: white;
+}

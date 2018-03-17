@@ -1,0 +1,44 @@
+{% extends './nav-public.html'%}
+
+{% block title %}用户管理{% endblock %}
+
+{% block admin %}
+{{userInfo.username}}
+{% endblock %}
+{% block cssLink %}
+<link href="/public/css/categoryAdd.css" rel="stylesheet">
+<link href="/public/css/pagegation.css" rel="stylesheet">
+<link href="/public/css/categoryHandle.css" rel="stylesheet">
+
+
+{% endblock %}
+
+{% block content%}
+<div class="nowposition">
+    <ol class="breadcrumb">
+        当前位置：
+        <li><a href="/admin/user">首页</a></li>
+        <li class="active">处理信息</li>
+    </ol>
+</div>
+
+<!--显示处理结果-->
+
+
+<div class="handleMess">
+    <div class="handleTitle">处理结果:</div>
+    {% if handleMess.categoryHandleState!==2 %}
+    <div class="handleContent warning">{{handleMess.callbackMess}}</div>
+    <div class="handleResult"><a href="javascript:history.back()">返回上一步</a></div>
+    {% else %}
+    <div class="handleContent success">{{handleMess.callbackMess}}</div>
+        {% if handleMess.type==='categoryAdd'%}
+    <div class="handleResult"><a href="/admin/category_index">跳转到分类管理首页</a></div>
+        {% else %}
+    <div class="handleResult"><a href="/admin/blogContent_index">跳转到博文管理首页</a></div>
+        {% endif %}
+
+    {% endif %}
+</div>
+
+{% endblock %}

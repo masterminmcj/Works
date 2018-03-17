@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>3像素问题</title>
+</head>
+
+<!--
+在标准浏览器下，实现左右分布没有全使用浮动，而使用maigin在视觉上可以达到目的
+而在IE6下左右会有3像素的间隙
+
+解决方法：老老实实使用浮动布局
+-->
+<style>
+    .div1{
+        width: 100px;
+        height: 100px;
+        float: left;
+        background-color: #1dff28;
+    }
+    .div2{
+        width: 200px;
+        height: 100px;
+        background-color: red;
+        margin-left: 100px;
+    }
+</style>
+<body>
+<div class="div1">div1</div>
+<div class="div2">div2</div>
+</body>
+</html>

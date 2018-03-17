@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+ <script type="application/javascript" src="JSfile/angular.min.js"></script>
+</head>
+<style type="text/css">
+ .lab1>input,.lab2>input{width: 300px;height: 35px;font-size: 16px;margin: 5px}
+input[type="submit"]{width: 100px;height: 35px;}
+</style>
+<body>
+<div>
+<form name="myform" ng-app="myapp" ng-controller="mycontroller" novalidate>
+   <label class="lab1">用户名:
+   <input type="text" ng-model="user" name="user" required>
+
+
+ <span style="color: red" ng-show="myform.user.$dirty&&myform.user.$invalid">
+<span ng-show="myform.user.$error.required">用户名是必须的</span>
+       </span>
+   </label>
+
+
+
+    <div></div>
+   <label class="lab2">
+    邮<span style="margin-left: 2px">&nbsp;&nbsp;&nbsp;</span>箱:
+       <input type="email" ng-model="email" name="email" required>
+
+<span ng-show="myform.email.$dirty&&myform.email.$invalid" style="color: red">
+<span ng-show="myform.email.$error.required">邮箱是必须的</span>
+<span ng-show="myform.email.$error.email">邮箱格式不合法</span>
+       </span>
+   </label>
+<div></div>
+
+       <input type="submit" ng-disabled="myform.user.$dirty&&myform.user.$invalid||
+       myform.email.$dirty&&myform.email.$invalid"
+              onclick="alert('提交成功!')">
+</form>
+
+
+
+
+
+
+
+
+
+</div>
+<script>
+    var app=angular.module("myapp",[]);
+    app.controller("mycontroller",function($scope) {
+                $scope.user="user";
+                $scope.email="1111111111@QQ.COM"
+    }
+    )
+
+</script>
+
+</body>
+</html>

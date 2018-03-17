@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>自定义模板</title>
+    <script type="application/javascript" src="../JSfile/angular.min.js"></script>
+</head>
+<body>
+<div ng-app="myapp" ng-controller="mycontroller">
+
+<custom></custom><!--元素-->
+ <p custom></p>   <!--属性-->
+</div>
+
+<script type="application/javascript">
+    var app=angular.module("myapp",[]);
+    app.directive("custom",function(){
+        return{
+            restrict:"A",//限制以属性形式
+            template:"<p>这是我自定义的指令</p>"
+        }
+    })
+
+</script>
+</body>
+</html>

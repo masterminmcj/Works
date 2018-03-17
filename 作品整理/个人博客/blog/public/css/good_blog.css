@@ -1,0 +1,27 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+
+.containers{
+    width: 100%;
+
+    background-color: #EEE;
+
+}
+.blog_title{
+    background-color: white;
+    text-align: center;
+    padding-top:20px;
+border-bottom: 2px solid #aaa;
+}
+.blog_title span{
+    font-size: 30px;
+    font-weight: bold;
+    color: #63ee75;
+
+    text-shadow: #ff886a 10px 10px 5px ;
+    padding: 20px;
+
+}

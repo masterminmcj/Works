@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>导航切换</title>
+</head>
+<style>
+*{margin: 0;padding: 0}
+    .container{
+    position: absolute;
+        left: 100px;
+        top: 100px;
+        width: 695px;
+        height: 500px;
+        border: 1px solid #ff9242;
+        background-color: #EEEEEE;
+
+    }
+
+    .nav ul{
+        list-style: none;
+        clear: both;
+    }
+    .nav ul li{
+        float: left;
+border-right: 2px solid white;
+        width: 33%;
+        height: 45px;
+        font-size: 22px;
+text-align: center;
+        background-color: #0944ff;
+        line-height: 45px;
+    }
+
+    .nav ul li a{
+        text-decoration: none;
+        color: white;
+    }
+    .content{
+
+        width: 100%;
+        height: 455px;
+   background-color: #fff897;
+        clear: both;
+
+    }
+</style>
+<body ng-app="myapp">
+<div ng-controller="ctr">
+
+    <div  class="container">
+
+    <div class="nav">
+        <ul>
+        <il>
+            <li><a href="" ng-click="chanel1()">首页</a></li>
+            <li><a href="" ng-click="chanel2()">图书专区</a></li>
+            <li><a href="" ng-click="chanel3()">购物专区</a></li>
+        </il>
+        </ul>
+
+    </div>
+        <div class="content">
+        <div ng-include="'./home.html'" ng-if="home"></div>
+        <div ng-include="'./book.html'" ng-if="book"></div>
+        <div ng-include="'./shop.html'" ng-if="shop"></div>
+        </div>
+</div>
+
+
+
+</div>
+
+
+
+<script type="application/javascript" src="../../JSfile/angular.min.js"></script>
+<script type="application/javascript">
+ angular.module("myapp",[])
+     .controller("ctr",function ($scope) {
+$scope.home=true;
+$scope.book=false;
+$scope.shop=false;
+
+
+$scope.chanel1=function(){
+    $scope.home=true;
+    $scope.book=false;
+    $scope.shop=false;
+};
+$scope.chanel2=function(){
+    $scope.home=false;
+    $scope.book=true;
+    $scope.shop=false;
+};
+    $scope.chanel3=function(){
+    $scope.home=false;
+    $scope.book=false;
+    $scope.shop=true;
+}
+
+
+
+
+     })
+
+</script>
+</body>
+</html>

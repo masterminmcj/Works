@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>第一个vue工程</title>
+</head>
+<body>
+<div class="myapp">
+
+    <input type="text" v-model="mydata">
+
+    <p>{{mydata.split("")}}</p>
+
+<ul v-for="x in num">
+    <li>{{x}}</li>
+</ul>
+
+<h1>{{message}}</h1>
+
+
+<h2>输出html代码</h2>
+    <div v-html="html"></div>
+
+
+</div>
+
+
+
+<script type="application/javascript" src="js/vue.js"></script>
+<script type="application/javascript">
+    new Vue({
+        el:".myapp",
+        data:{
+            mydata:"",
+            message:"hello wrold",
+            name:"curry",
+            job:"palyer",
+            num:[1,2,3,4,5],
+            html:'<h4>这是HTML</h4>'
+        }
+
+        }
+
+
+    )
+
+</script>
+</body>
+</html>

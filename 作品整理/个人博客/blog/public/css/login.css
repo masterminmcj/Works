@@ -1,0 +1,232 @@
+.container{
+    width: 100%;
+    height: 768px;
+    background: url("../img/bg1.jpg") no-repeat;
+    opacity: 0.8;
+}
+.login,.register{
+    position: absolute;
+    left: 450px;
+    top:300px;
+padding: 20px;
+}
+.username_container input,.psd_container input{
+    width: 300px;
+    height: 45px;
+    color: black;
+    font-size: 23px;
+    border: 2px solid #d2d6ff;
+    border-radius: 10px;
+    background-color: #EEE;
+}
+.username_container span{
+   margin-right: 10px;
+
+}
+
+input:focus{
+    outline: none;
+}
+
+.psd_container{
+    font-size: 25px;
+    color:  #6257ff;
+    font-family:微软雅黑
+}
+
+.psd_container input{
+    margin-top: 15px;
+    font-size: 25px;
+    margin-left: 10px;
+}
+.submit_container{
+    margin:15px 0 0 30px;
+    font-size: 25px;
+}
+.submit_container input[type='submit']{
+    width: 120px;
+    height: 45px;
+    border-radius: 10px;
+    background-color: #0913ff;
+    color: white;
+    margin-left: 20px;
+
+}
+.submit_container input[type='checkbox']{
+    width: 25px;
+    height: 25px;
+position: relative;
+    left: 30px;
+    top:10px;
+
+
+}
+.submit_container label{
+    margin-left: 30px;
+    font-size: 25px;
+    font-family: 方正楷体_GBK;];
+   color: #ffb424;
+position: relative;
+    top: 7px;
+    opacity: 1;
+}
+.glyphicon{
+    font-size: 25px;
+    color: #666;
+
+}
+.err_mess{
+    font-size: 20px;
+    color: #ff2525;
+    margin: 10px 0 0 80px;
+   display: none;
+}
+.username_notic{
+    font-size: 20px;
+    color: #84ff7c;
+    margin-left: 10px;
+
+}
+
+
+
+.glyphicon-ok{
+visibility: hidden;
+    color: green;
+
+}
+    .glyphicon-remove{
+        color: #ff4860;
+    visibility: hidden;
+    margin-left: -20px;
+}
+.psd_notic{
+    font-size: 20px;
+    color: #84ff7c;
+    margin-left: 15px;
+}
+
+
+
+
+/*注册样式*/
+.login_to_rigister{
+margin-top: 10px;
+    margin-left: 100px;
+    font-size: 18px;
+    color: #666;
+}
+.login_to_rigister>span>a{
+    text-decoration: none;
+    color: #2c6eff;
+    cursor: pointer;
+}
+.register{
+    display: none;
+}
+.registerForm>label{
+    display: block;
+    font-size: 20px;
+    color: #1979ff;
+    position: relative;
+    margin:15px 0;
+}
+.registerForm>label>input{
+    width: 250px;
+    height: 35px;
+    border-radius: 4px;
+    border: 1px solid;
+margin: 10px 0;
+}
+
+.registerForm>input[type='submit']{
+    width: 120px;
+    height: 40px;
+    margin:10px 0 0 10px;
+    background-color: #1903ff;
+    color: white;
+    font-size: 20px;
+    border-radius: 5px;
+}
+#registerUsername>input,#registerPassword>input,#userPhoneNumber>input,#ensurePassword>input{
+    position: absolute;
+    left: 160px;
+    top:-10px;
+    border: 1px solid #ccc;
+}
+
+#registerUsername>span,#registerPassword>span,#userPhoneNumber>span,#ensurePassword>span{
+    position: absolute;
+    left: 430px;
+
+}
+
+.registerexit{
+    color: red;
+    font-size: 20px;
+    margin-left: 20px;
+    display: none;
+}
+.repeatPassword{
+    color: red;
+    font-size: 18px;
+    margin-left: 10px;
+    display:none;
+}
+
+
+/*注册成功样式*/
+
+.registerSuccess{
+display: none;
+    width: 80%;
+    height: 170px;
+    background-color: white;
+    position: absolute;
+    top:100px;
+    border-radius: 5px;
+    text-align: center;
+padding-top:30px;
+}
+.registerSuccessContent{
+width: 70%;
+display: inline-block;
+    height: 75px;
+    line-height:75px;
+    background-color: green;
+    margin: 0 auto;
+    color: white;
+    font-size: 22px;
+    border-radius: 7px;
+}
+.registerSuccess>.successLogo{
+    display: inline-block;
+position: relative;
+}
+.successLogo>span{
+    font-size: 65px;
+    color: green;
+    position: absolute;
+    top:-25px;
+    left: 10px;
+}
+.registerSuccess>p:last-child{
+    font-size: 16px;
+    margin: 10px 0 0 0;
+    color: black;
+}
+
+.registerSuccess>p>a.toLogin{
+    text-decoration: none;
+    font-size: 20px;
+    color: blue;
+    cursor: pointer;
+}
+
+.active{
+    visibility: visible;
+}
+
+
+
+
